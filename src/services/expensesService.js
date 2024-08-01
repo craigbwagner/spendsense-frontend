@@ -43,5 +43,19 @@ async function update(expenseId, expenseFormData) {
   }
 }
 
+const deleteExpense = async () => {
+  try {
+    const res = await fetch(`${BACKEND_URL}/${expenseId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}` ,
+        "Content-Type": "application/json",
+      },
+    });
+    return res.json();
+  } catch (err) {
+    throw new Error(err);
+  }
+}
 
-export { index, create, update }
+export { index, create, update, deleteExpense }
