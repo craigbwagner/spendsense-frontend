@@ -13,7 +13,7 @@ import {
 } from "./ui/form";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import * as authService from "../../services/authService";
+import * as authService from "../services/authService";
 
 const formSchema = z.object({
   username: z.string().min(5).max(20),
