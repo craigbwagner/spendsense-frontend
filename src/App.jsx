@@ -8,19 +8,27 @@ export const AuthedUserContext = createContext(null);
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
+  const navigate = useNavigate();
 
   const handleSignout = () => {
     authService.signout();
     setUser(null);
+    navigate("/");
   };
 
   return (
     <>
       <AuthedUserContext.Provider value={user}>
         <Routes>
-          <Route path="/" element={<h1>Home</h1>} />
-          <Route path="/signup" element={<SignupForm setUser={setUser} />} />
-          <Route path="/signin" element={<SigninForm setUser={setUser} />} />
+          { user ? (
+            <Route path="/" element={<h1>Home</h1>} />
+          ) : (
+            <>
+              <Route path="/" element={<h1>Home</h1>} />
+              <Route path="/signup" element={<SignupForm setUser={setUser} />} />
+              <Route path="/signin" element={<SigninForm setUser={setUser} />} />
+            </>
+          )}
         </Routes>
       </AuthedUserContext.Provider>
     </>
