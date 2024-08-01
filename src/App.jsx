@@ -6,7 +6,7 @@ import SigninForm from "./components/SigninForm";
 import * as authService from "../services/authService";
 export const AuthedUserContext = createContext(null);
 
-function App() {
+const App = () => {
   const [user, setUser] = useState(authService.getUser());
 
   const handleSignout = () => {
@@ -25,6 +25,6 @@ function App() {
       </AuthedUserContext.Provider>
     </>
   );
-}
+};
 
 export default App;
