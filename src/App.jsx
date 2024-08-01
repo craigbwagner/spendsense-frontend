@@ -3,7 +3,8 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import SignupForm from "./components/SignupForm";
 import SigninForm from "./components/SigninForm";
-import * as authService from "./services/authService";
+import * as authService from "../services/authService";
+import Navbar from "./components/Navbar";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
@@ -19,14 +20,21 @@ const App = () => {
   return (
     <>
       <AuthedUserContext.Provider value={user}>
+        <Navbar handleSignout={handleSignout} />
         <Routes>
-          { user ? (
+          {user ? (
             <Route path="/" element={<h1>Home</h1>} />
           ) : (
             <>
               <Route path="/" element={<h1>Home</h1>} />
-              <Route path="/signup" element={<SignupForm setUser={setUser} />} />
-              <Route path="/signin" element={<SigninForm setUser={setUser} />} />
+              <Route
+                path="/signup"
+                element={<SignupForm setUser={setUser} />}
+              />
+              <Route
+                path="/signin"
+                element={<SigninForm setUser={setUser} />}
+              />
             </>
           )}
         </Routes>
