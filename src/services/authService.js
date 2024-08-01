@@ -7,7 +7,7 @@ function getUser() {
   return user;
 };
 
-async function signup (formData) {
+async function signup(formData) {
   try {
     const res = await fetch(`${BACKEND_URL}/auth/signup`, {
       method: "POST",
