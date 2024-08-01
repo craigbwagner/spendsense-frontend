@@ -1,13 +1,13 @@
 const BACKEND_URL = import.meta.env.VITE_FLASK_BACKEND_URL;
 
-const getUser = () => {
+function getUser() {
   const token = localStorage.getItem("token");
   if (!token) return null;
   const user = JSON.parse(atob(token.split(".")[1]));
   return user;
 };
 
-const signup = async (formData) => {
+async function signup (formData) {
   try {
     const res = await fetch(`${BACKEND_URL}/auth/signup`, {
       method: "POST",
@@ -25,7 +25,7 @@ const signup = async (formData) => {
   }
 };
 
-const signin = async (user) => {
+async function signin(user) {
   try {
     const res = await fetch(`${BACKEND_URL}/auth/signin`, {
       method: "POST",
@@ -47,7 +47,7 @@ const signin = async (user) => {
   }
 };
 
-const signout = () => {
+function signout() {
   localStorage.removeItem("token");
 };
 
