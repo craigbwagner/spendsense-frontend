@@ -1,3 +1,4 @@
+import { useState } from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -11,6 +12,8 @@ import {
 } from "./ui/form";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { useNavigate } from "react-router-dom";
+import * as authService from "../../services/authService";
 
 const formSchema = z
   .object({
@@ -23,19 +26,31 @@ const formSchema = z
     path: ["passwordConfirm"],
   });
 
-const SignupForm = () => {
+const SignupForm = (props) => {
+  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: { username: "", password: "", passwordConfirm: "" },
   });
 
-  const handleSubmit = (data) => {
-    console.log(data);
+  const handleSubmit = async (data) => {
+    try {
+      const user = await authService.signup(data);
+      console.log(user);
+      props.setUser(user);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+      setMessage(err.message);
+    }
   };
 
   return (
-    <main className="m-8 flex h-full w-full items-center justify-center">
+    <main className="m-8 flex h-full w-full flex-col items-center justify-center">
       <Form {...form}>
+        {message && <p className="text-red-500">{message}</p>}
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
           className="flex w-full max-w-md flex-col gap-4"
