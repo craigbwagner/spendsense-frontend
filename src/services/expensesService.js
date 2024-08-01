@@ -43,7 +43,7 @@ async function update(expenseId, expenseFormData) {
   }
 }
 
-const deleteExpense = async () => {
+const deleteExpense = async (expenseId) => {
   try {
     const res = await fetch(`${BACKEND_URL}/${expenseId}`, {
       method: "DELETE",
