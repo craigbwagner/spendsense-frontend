@@ -1,4 +1,4 @@
-const BACKEND_URL = import.meta.env.VITE_FLASK_BACKEND_URL;
+const BACKEND_URL = `${import.meta.env.VITE_FLASK_BACKEND_URL}/expenses`;
 
 async function index() {
   try {
