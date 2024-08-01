@@ -2,7 +2,7 @@ const BACKEND_URL = import.meta.env.VITE_FLASK_BACKEND_URL;
 
 async function index() {
   try {
-    const res = await fetch(BASE_URL, {
+    const res = await fetch(BACKEND_URL, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
     return res.json();
@@ -10,3 +10,38 @@ async function index() {
     throw new Error(err);
   }
 };
+
+async function create(expenseFormData) {
+  try {
+    const res = await fetch(BACKEND_URL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}` ,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenseFormData),
+    });
+    return res.json();
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
+async function update(expenseId, expenseFormData) {
+  try {
+    const res = await fetch(`${BACKEND_URL}/${expenseId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}` ,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenseFormData),
+    });
+    return res.json();
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
+
+export { index, create, update }
