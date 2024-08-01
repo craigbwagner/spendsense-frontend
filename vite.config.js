@@ -4,6 +4,11 @@ import { defineConfig } from "vite";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
+/**
+ * Get the directory name from the importMetaUrl.
+ * @param {string} importMetaUrl - The importMetaUrl.
+ * @returns {string} The directory name.
+ */
 function getDirname(importMetaUrl) {
   const filename = fileURLToPath(importMetaUrl);
   return dirname(filename);
