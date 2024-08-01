@@ -32,7 +32,6 @@ const SigninForm = (props) => {
   const handleSubmit = async (data) => {
     try {
       const user = await authService.signin(data);
-      console.log(user);
       props.setUser(user);
       navigate("/");
     } catch (err) {
@@ -43,12 +42,12 @@ const SigninForm = (props) => {
   };
 
   return (
-    <main className="m-8 flex h-full w-full flex-col items-center justify-center">
+    <main className="flex flex-col items-center justify-center w-full h-full m-8">
       <Form {...form}>
         {message && <p className="text-red-500">{message}</p>}
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
-          className="flex w-full max-w-md flex-col gap-4"
+          className="flex flex-col w-full max-w-md gap-4"
         >
           <FormField
             control={form.control}
