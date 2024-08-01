@@ -1,6 +1,6 @@
 const BACKEND_URL = `${import.meta.env.VITE_FLASK_BACKEND_URL}/expenses`;
 
-async function index() {
+const index = async () => {
   try {
     const res = await fetch(BACKEND_URL, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -11,7 +11,7 @@ async function index() {
   }
 }
 
-async function create(expenseFormData) {
+const create = async (expenseFormData) => {
   try {
     const res = await fetch(BACKEND_URL, {
       method: "POST",
@@ -27,7 +27,7 @@ async function create(expenseFormData) {
   }
 }
 
-async function update(expenseId, expenseFormData) {
+const update = async (expenseId, expenseFormData) => {
   try {
     const res = await fetch(`${BACKEND_URL}/${expenseId}`, {
       method: "PUT",
