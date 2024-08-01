@@ -9,7 +9,7 @@ async function index() {
   } catch (err) {
     throw new Error(err);
   }
-};
+}
 
 async function create(expenseFormData) {
   try {
