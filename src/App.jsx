@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import SignupForm from "./components/SignupForm";
 import SigninForm from "./components/SigninForm";
-import * as authService from "../services/authService";
+import * as authService from "./services/authService";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {

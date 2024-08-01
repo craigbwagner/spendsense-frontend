@@ -13,7 +13,7 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { useNavigate } from "react-router-dom";
-import * as authService from "../../services/authService";
+import * as authService from "../services/authService";
 
 const formSchema = z
   .object({
