@@ -21,10 +21,12 @@ const getSettings = async () => {
 }
 
 const formSchema = z.object({
-  monthly_income:
+  monthly_income: z.number(),
+  monthly_budget: z.number(),
+  savings_goal: z.number()
 });
 
-const updateSettingsForm = (props) => {
+const UpdateSettingsForm = (props) => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
 
