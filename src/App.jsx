@@ -1,21 +1,41 @@
-import { useState, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import SignupForm from "./components/SignupForm";
 import SigninForm from "./components/SigninForm";
 import * as authService from "./services/authService";
+import * as expensesService from "./services/expensesService";
 import Navbar from "./components/Navbar";
 import ExpenseForm from "./components/ExpenseForm";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
+  const [expenses, setExpenses] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchExpenses = async () => {
+      const expenses = await expensesService.index();
+      setExpenses(expenses);
+    };
+    fetchExpenses();
+  }, []);
 
   const handleSignout = () => {
     authService.signout();
     setUser(null);
     navigate("/");
+  };
+
+  const handleCreateExpense = async (expenseFormData) => {
+    try {
+      const createdExpense = await expensesService.create(expenseFormData);
+      setExpenses([...expenses, createdExpense]);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -26,7 +46,12 @@ const App = () => {
           {user ? (
             <>
               <Route path="/" element={<h1>Home</h1>} />
-              <Route path="/expense" element={<ExpenseForm />} />
+              <Route
+                path="/expense"
+                element={
+                  <ExpenseForm handleCreateExpense={handleCreateExpense} />
+                }
+              />
             </>
           ) : (
             <>

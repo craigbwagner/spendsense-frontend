@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -19,14 +18,13 @@ import {
 } from "./ui/select";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import * as expensesService from "../services/expensesService";
 
 const formSchema = z.object({
   name: z.string().min(5).max(40),
   amount: z.coerce.number().positive().min(0.01),
   date: z.coerce.date(),
   category: z.enum([
-    "food",
+    "food_groceries",
     "transportation",
     "housing",
     "other",
@@ -40,9 +38,7 @@ const formSchema = z.object({
   ]),
 });
 
-const ExpenseForm = () => {
-  const navigate = useNavigate();
-
+const ExpenseForm = (props) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -53,14 +49,7 @@ const ExpenseForm = () => {
   });
 
   const handleSubmit = async (data) => {
-    console.log(data);
-    try {
-      const createdExpense = await expensesService.create(data);
-      console.log(createdExpense);
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-    }
+    props.handleCreateExpense(data);
     form.reset();
   };
 
