@@ -68,7 +68,7 @@ const ExpenseForm = (props) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel>name</FormLabel>
+                  <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Input placeholder="name" {...field} />
                   </FormControl>
