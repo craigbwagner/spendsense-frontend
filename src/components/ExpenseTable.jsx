@@ -1,4 +1,5 @@
 import { useState } from "react";
+import moment from "moment";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import {
@@ -36,28 +37,37 @@ const ExpenseTable = (props) => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  const isThisWeek = (dateString) => {
+    const date = moment(dateString);
+    const startOfWeek = moment().startOf("week");
+    const endOfWeek = moment().endOf("week");
+    return date.isBetween(startOfWeek, endOfWeek, null, "[]");
+  };
+
+  const isThisMonth = (dateString) => {
+    const date = moment(dateString);
+    const startOfMonth = moment().startOf("month");
+    const endOfMonth = moment().endOf("month");
+    return date.isBetween(startOfMonth, endOfMonth, null, "[]");
+  };
+
+  const isThisYear = (dateString) => {
+    const date = moment(dateString);
+    const startOfYear = moment().startOf("year");
+    const endOfYear = moment().endOf("year");
+    return date.isBetween(startOfYear, endOfYear, null, "[]");
+  };
+
   const weeklyExpenses = props.expenses.filter((expense) => {
-    const expenseDate = new Date(expense.date);
-    const today = new Date();
-    const diff = today - expenseDate;
-    const days = diff / (1000 * 60 * 60 * 24);
-    return days <= 7;
+    return isThisWeek(expense.date);
   });
 
   const monthlyExpenses = props.expenses.filter((expense) => {
-    const expenseDate = new Date(expense.date);
-    const today = new Date();
-    const diff = today - expenseDate;
-    const days = diff / (1000 * 60 * 60 * 24);
-    return days <= 30;
+    return isThisMonth(expense.date);
   });
 
   const yearlyExpenses = props.expenses.filter((expense) => {
-    const expenseDate = new Date(expense.date);
-    const today = new Date();
-    const diff = today - expenseDate;
-    const days = diff / (1000 * 60 * 60 * 24);
-    return days <= 365;
+    return isThisYear(expense.date);
   });
 
   const filteredExpenses = (tab) => {
@@ -153,7 +163,11 @@ const ExpenseTable = (props) => {
                         <TableCell>{expense.name}</TableCell>
                         <TableCell>${expense.amount}</TableCell>
                         <TableCell>{formatDate(expense.date)}</TableCell>
-                        <TableCell>{expense.category}</TableCell>
+                        <TableCell>
+                          {expense.category == "food_groceries"
+                            ? "food"
+                            : expense.category}
+                        </TableCell>
                       </TableRow>
                     );
                   })}
@@ -215,7 +229,11 @@ const ExpenseTable = (props) => {
                         <TableCell>{expense.name}</TableCell>
                         <TableCell>${expense.amount}</TableCell>
                         <TableCell>{formatDate(expense.date)}</TableCell>
-                        <TableCell>{expense.category}</TableCell>
+                        <TableCell>
+                          {expense.category == "food_groceries"
+                            ? "food"
+                            : expense.category}
+                        </TableCell>
                       </TableRow>
                     );
                   })}
@@ -277,7 +295,11 @@ const ExpenseTable = (props) => {
                         <TableCell>{expense.name}</TableCell>
                         <TableCell>${expense.amount}</TableCell>
                         <TableCell>{formatDate(expense.date)}</TableCell>
-                        <TableCell>{expense.category}</TableCell>
+                        <TableCell>
+                          {expense.category == "food_groceries"
+                            ? "food"
+                            : expense.category}
+                        </TableCell>
                       </TableRow>
                     );
                   })}
