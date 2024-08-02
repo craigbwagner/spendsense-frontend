@@ -19,14 +19,13 @@ import {
 } from "./ui/select";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import * as expensesService from "../services/expensesService";
 
 const formSchema = z.object({
   name: z.string().min(5).max(40),
   amount: z.coerce.number().positive().min(0.01),
   date: z.coerce.date(),
   category: z.enum([
-    "food",
+    "food_groceries",
     "transportation",
     "housing",
     "other",
@@ -40,7 +39,7 @@ const formSchema = z.object({
   ]),
 });
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const navigate = useNavigate();
 
   const form = useForm({
@@ -53,14 +52,7 @@ const ExpenseForm = () => {
   });
 
   const handleSubmit = async (data) => {
-    console.log(data);
-    try {
-      const createdExpense = await expensesService.create(data);
-      console.log(createdExpense);
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-    }
+    props.handleCreateExpense(data);
     form.reset();
   };
 
