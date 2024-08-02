@@ -8,6 +8,7 @@ import * as expensesService from "./services/expensesService";
 import * as settingsService from "./services/settingsService";
 import Navbar from "./components/Navbar";
 import ExpenseForm from "./components/ExpenseForm";
+import UpdateSettingsForm from "./components/UpdateSettingsForm";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
@@ -59,6 +60,7 @@ const App = () => {
                   <ExpenseForm handleCreateExpense={handleCreateExpense} />
                 }
               />
+              <Route path="/settings" element={<UpdateSettingsForm settings={settings} />} />
             </>
           ) : (
             <>
