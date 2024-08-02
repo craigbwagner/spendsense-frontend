@@ -29,7 +29,6 @@ const formSchema = z.object({
 
 const UpdateSettingsForm = (props) => {
   const navigate = useNavigate();
-  const [message, setMessage] = useState("");
 
   const form = useForm({
     resolver: zodResolver(formSchema),
