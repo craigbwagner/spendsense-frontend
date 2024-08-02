@@ -133,7 +133,7 @@ const ExpenseForm = () => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="food">Food</SelectItem>
+                      <SelectItem value="food_groceries">Food</SelectItem>
                       <SelectItem value="transportation">
                         Transportation
                       </SelectItem>
