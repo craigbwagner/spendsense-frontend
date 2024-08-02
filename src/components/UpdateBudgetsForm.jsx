@@ -15,7 +15,17 @@ import { Input } from "./ui/input";
 import * as categoryBudgetsService from "../services/categoryBudgetsService"
 
 const formSchema = z.object({
-
+  housing: z.coerce.number().nonnegative(),
+  transportation: z.coerce.number().nonnegative(),
+  food_groceries: z.coerce.number().nonnegative(),
+  utilities: z.coerce.number().nonnegative(),
+  clothing: z.coerce.number().nonnegative(),
+  medical: z.coerce.number().nonnegative(),
+  insurance: z.coerce.number().nonnegative(),
+  personal: z.coerce.number().nonnegative(),
+  education: z.coerce.number().nonnegative(),
+  entertainment: z.coerce.number().nonnegative(),
+  other: z.coerce.number().nonnegative(),
 });
 
 const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
@@ -27,7 +37,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
 
     },
     values: {
-      monthly_income: categoryBudgets.housing,
+      housing: categoryBudgets.housing,
     },
   });
 
