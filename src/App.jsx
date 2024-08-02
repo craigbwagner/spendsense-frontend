@@ -6,6 +6,7 @@ import SigninForm from "./components/SigninForm";
 import * as authService from "./services/authService";
 import * as expensesService from "./services/expensesService";
 import * as settingsService from "./services/settingsService";
+import * as categoryBudgetsService from "./services/categoryBudgetsService";
 import Navbar from "./components/Navbar";
 import ExpenseForm from "./components/ExpenseForm";
 import UpdateSettingsForm from "./components/UpdateSettingsForm";
@@ -15,6 +16,7 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser());
   const [expenses, setExpenses] = useState([]);
   const [settings, setSettings] = useState([])
+  const [categoryBudgets, setCategoryBudgets] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,8 +28,15 @@ const App = () => {
       const fetchedSettings = await settingsService.index();
       setSettings(fetchedSettings);
     }
-    if (user) fetchExpenses();
-    if (user) fetchSettings();
+    const fetchCategoryBudgets = async () => {
+      const fetchedCategoryBudgets = await categoryBudgetsService.index();
+      setCategoryBudgets(fetchedCategoryBudgets);
+    }
+    if (user) {
+      fetchExpenses();
+      fetchSettings();
+      fetchCategoryBudgets();
+    }
   }, [user]);
 
   const handleSignout = () => {
