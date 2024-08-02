@@ -1,5 +1,11 @@
 import { useState, useEffect, createContext } from "react";
-import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  useNavigate,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 import SignupForm from "./components/SignupForm";
 import SigninForm from "./components/SigninForm";
@@ -7,13 +13,13 @@ import * as authService from "./services/authService";
 import * as expensesService from "./services/expensesService";
 import Navbar from "./components/Navbar";
 import ExpenseForm from "./components/ExpenseForm";
-import { Replace } from "lucide-react";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
   const [expenses, setExpenses] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchExpenses = async () => {
