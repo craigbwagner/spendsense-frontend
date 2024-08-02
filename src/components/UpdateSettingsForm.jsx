@@ -14,6 +14,7 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import * as settingsService from "../services/settingsService"
+import ExpenseForm from "./ExpenseForm";
 
 const getSettings = async () => {
   const userSettings = await settingsService.index();
@@ -54,3 +55,5 @@ const UpdateSettingsForm = (props) => {
     </section>
   )
 }
+
+export default UpdateSettingsForm;
