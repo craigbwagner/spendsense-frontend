@@ -22,7 +22,12 @@ const App = () => {
       const fetchedExpenses = await expensesService.index();
       setExpenses(fetchedExpenses);
     };
+    const fetchSettings = async () => {
+      const fetchedSettings = await settingsService.index();
+      setSettings(fetchedSettings);
+    }
     if (user) fetchExpenses();
+    if (user) fetchSettings();
   }, [user]);
 
   const handleSignout = () => {
