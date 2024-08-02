@@ -21,9 +21,9 @@ const getSettings = async () => {
 }
 
 const formSchema = z.object({
-  monthly_income: z.number(),
-  monthly_budget: z.number(),
-  savings_goal: z.number()
+  monthly_income: z.coerce.number().positive(),
+  monthly_budget: z.coerce.number().positive(),
+  savings_goal: z.coerce.number().positive()
 });
 
 const UpdateSettingsForm = (props) => {
