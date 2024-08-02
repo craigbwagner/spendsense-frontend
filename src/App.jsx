@@ -19,8 +19,8 @@ const App = () => {
       const expenses = await expensesService.index();
       setExpenses(expenses);
     };
-    fetchExpenses();
-  }, []);
+    if (user) fetchExpenses();
+  }, [user]);
 
   const handleSignout = () => {
     authService.signout();
