@@ -21,7 +21,7 @@ const formSchema = z.object({
   savings_goal: z.coerce.number().nonnegative()
 });
 
-const UpdateSettingsForm = (props) => {
+const UpdateSettingsForm = ({ settings }) => {
   const navigate = useNavigate();
 
   const form = useForm({
@@ -31,6 +31,11 @@ const UpdateSettingsForm = (props) => {
       monthly_budget: 0,
       savings_goal: 0
     },
+    values: {
+      monthly_income: settings.monthly_income,
+      monthly_budget: settings.monthly_budget,
+      savings_goal: settings.savings_goal
+    }
   });
 
   const handleSubmit = async (data) => {
