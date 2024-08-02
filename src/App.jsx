@@ -5,21 +5,29 @@ import SignupForm from "./components/SignupForm";
 import SigninForm from "./components/SigninForm";
 import * as authService from "./services/authService";
 import * as expensesService from "./services/expensesService";
+import * as settingsService from "./services/settingsService";
 import Navbar from "./components/Navbar";
 import ExpenseForm from "./components/ExpenseForm";
+import UpdateSettingsForm from "./components/UpdateSettingsForm";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
   const [expenses, setExpenses] = useState([]);
+  const [settings, setSettings] = useState([])
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchExpenses = async () => {
-      const expenses = await expensesService.index();
-      setExpenses(expenses);
+      const fetchedExpenses = await expensesService.index();
+      setExpenses(fetchedExpenses);
     };
+    const fetchSettings = async () => {
+      const fetchedSettings = await settingsService.index();
+      setSettings(fetchedSettings);
+    }
     if (user) fetchExpenses();
+    if (user) fetchSettings();
   }, [user]);
 
   const handleSignout = () => {
@@ -52,6 +60,7 @@ const App = () => {
                   <ExpenseForm handleCreateExpense={handleCreateExpense} />
                 }
               />
+              <Route path="/settings" element={<UpdateSettingsForm settings={settings} setSettings={setSettings} />} />
             </>
           ) : (
             <>

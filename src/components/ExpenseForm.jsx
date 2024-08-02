@@ -54,13 +54,13 @@ const ExpenseForm = (props) => {
   };
 
   return (
-    <main className="m-8 flex h-full w-full flex-col items-center justify-center">
+    <main className="flex flex-col items-center justify-center w-full h-full m-8">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => {
             handleSubmit(data);
           })}
-          className="flex w-full max-w-md flex-col gap-4"
+          className="flex flex-col w-full max-w-md gap-4"
         >
           <FormField
             control={form.control}
