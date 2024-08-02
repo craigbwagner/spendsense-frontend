@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import "./App.css";
 import SignupForm from "./components/SignupForm";
 import SigninForm from "./components/SigninForm";
@@ -7,6 +7,7 @@ import * as authService from "./services/authService";
 import * as expensesService from "./services/expensesService";
 import Navbar from "./components/Navbar";
 import ExpenseForm from "./components/ExpenseForm";
+import { Replace } from "lucide-react";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
@@ -52,6 +53,7 @@ const App = () => {
                   <ExpenseForm handleCreateExpense={handleCreateExpense} />
                 }
               />
+              <Route path="*" element={<Navigate to="/" />} />
             </>
           ) : (
             <>
@@ -64,6 +66,7 @@ const App = () => {
                 path="/signin"
                 element={<SigninForm setUser={setUser} />}
               />
+              <Route path="*" element={<Navigate to="/signin" />} />
             </>
           )}
         </Routes>
