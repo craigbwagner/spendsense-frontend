@@ -34,10 +34,30 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-
+      housing: 0,
+      transportation: 0,
+      food_groceries: 0,
+      utilities: 0,
+      clothing: 0,
+      medical: 0,
+      insurance: 0,
+      personal: 0,
+      education: 0,
+      entertainment: 0,
+      other: 0,
     },
     values: {
       housing: categoryBudgets.housing,
+      transportation: categoryBudgets.transportation,
+      food_groceries: categoryBudgets.food_groceries,
+      utilities: categoryBudgets.utilities,
+      clothing: categoryBudgets.clothing,
+      medical: categoryBudgets.medical,
+      insurance: categoryBudgets.insurance,
+      personal: categoryBudgets.personal,
+      education: categoryBudgets.education,
+      entertainment: categoryBudgets.entertainment,
+      other: categoryBudgets.other,
     },
   });
 
