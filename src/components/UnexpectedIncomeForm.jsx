@@ -18,7 +18,7 @@ const formSchema = z.object({
   date: z.coerce.date(),
 });
 
-const ExpenseForm = (props) => {
+const UnexpectedIncomeForm = (props) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -97,4 +97,4 @@ const ExpenseForm = (props) => {
   );
 };
 
-export default ExpenseForm;
+export default UnexpectedIncomeForm;
