@@ -22,13 +22,8 @@ const App = () => {
       const fetchedExpenses = await expensesService.index();
       setExpenses(fetchedExpenses);
     };
-    const fetchSettings = async () => {
-      const fetchedSettings = await settingsService.index();
-      setSettings(fetchedSettings);
-    }
-    fetchExpenses();
-    fetchSettings();
-  }, []);
+    if (user) fetchExpenses();
+  }, [user]);
 
   const handleSignout = () => {
     authService.signout();
