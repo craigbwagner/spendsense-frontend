@@ -39,14 +39,12 @@ const UpdateSettingsForm = (props) => {
 
   const handleSubmit = async (data) => {
     try {
-      const user = await authService.signin(data);
-      props.setUser(user);
-      navigate("/");
+      const updatedSettings = await settingsService.update();
+      console.log(updatedSettings)
+      navigate("/")
     } catch (err) {
       console.log(err);
-      setMessage(err.message);
     }
-    form.reset();
   }
   return (
     <section className="flex">
