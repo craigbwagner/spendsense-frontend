@@ -107,16 +107,14 @@ const ExpenseTable = (props) => {
                 <CardTitle>This week's expenses</CardTitle>
                 <CardDescription>All expenses for this week </CardDescription>
               </div>
-              <div className="mb-6">
-                <Label htmlFor="category-select" className="mb-2">
-                  Filter by Category
-                </Label>
+              <div className="m-0 flex items-center gap-4 p-0">
+                <Label htmlFor="category-select">Category:</Label>
                 <Select
                   id="category-select"
                   value={selectedCategory}
                   onValueChange={setSelectedCategory}
                 >
-                  <SelectTrigger className="w-48">
+                  <SelectTrigger className="m-0 w-48">
                     <SelectValue placeholder="All" />
                   </SelectTrigger>
                   <SelectContent>
@@ -171,10 +169,8 @@ const ExpenseTable = (props) => {
                 <CardTitle>This month's expenses</CardTitle>
                 <CardDescription>All expenses for this month</CardDescription>
               </div>
-              <div className="mb-6">
-                <Label htmlFor="category-select" className="mb-2">
-                  Filter by Category
-                </Label>
+              <div className="m-0 flex items-center gap-4 p-0">
+                <Label htmlFor="category-select">Category:</Label>
                 <Select
                   id="category-select"
                   value={selectedCategory}
@@ -235,10 +231,8 @@ const ExpenseTable = (props) => {
                 <CardTitle>This year's expenses</CardTitle>
                 <CardDescription>All expenses for this year</CardDescription>
               </div>
-              <div className="mb-6">
-                <Label htmlFor="category-select" className="mb-2">
-                  Filter by Category
-                </Label>
+              <div className="m-0 flex items-center gap-4 p-0">
+                <Label htmlFor="category-select">Category:</Label>
                 <Select
                   id="category-select"
                   value={selectedCategory}
