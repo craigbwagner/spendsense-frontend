@@ -1,11 +1,5 @@
 import { useState, useEffect, createContext } from "react";
-import {
-  Routes,
-  Route,
-  useNavigate,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import "./App.css";
 import SignupForm from "./components/SignupForm";
 import SigninForm from "./components/SigninForm";
@@ -19,7 +13,6 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser());
   const [expenses, setExpenses] = useState([]);
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     const fetchExpenses = async () => {
