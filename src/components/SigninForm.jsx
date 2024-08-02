@@ -43,7 +43,8 @@ const SigninForm = (props) => {
   };
 
   return (
-    <main className="m-8 flex h-full w-full flex-col items-center justify-center">
+    <main className="m-4 flex max-w-md flex-col items-center justify-center rounded-md border-2 border-black px-12 py-4">
+      <h1 className="p-4 text-2xl font-bold"> Log in </h1>
       <Form {...form}>
         {message && <p className="text-red-500">{message}</p>}
         <form

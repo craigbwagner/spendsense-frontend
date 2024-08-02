@@ -12,7 +12,7 @@ import {
 } from "./ui/form";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import * as authService from "../services/authService";
 
 const formSchema = z
@@ -48,12 +48,13 @@ const SignupForm = (props) => {
   };
 
   return (
-    <main className="m-8 flex h-full w-full flex-col items-center justify-center">
+    <main className="m-4 flex max-w-md flex-col items-center justify-center rounded-md border-2 border-black px-12 py-4">
+      <h1 className="p-4 text-2xl font-bold"> Sign up </h1>
       <Form {...form}>
         {message && <p className="text-red-500">{message}</p>}
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
-          className="flex w-full max-w-md flex-col gap-4"
+          className="flex w-full max-w-md flex-col gap-8"
         >
           <FormField
             control={form.control}
@@ -108,6 +109,12 @@ const SignupForm = (props) => {
           <Button type="submit">Submit </Button>
         </form>
       </Form>
+      <p className="mt-8 text-xs">
+        Already have an account?{" "}
+        <Link className="font-semibold text-green-600" to="/signin">
+          Log in
+        </Link>
+      </p>
     </main>
   );
 };
