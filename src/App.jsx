@@ -10,6 +10,7 @@ import * as categoryBudgetsService from "./services/categoryBudgetsService";
 import Navbar from "./components/Navbar";
 import ExpenseForm from "./components/ExpenseForm";
 import UpdateSettingsForm from "./components/UpdateSettingsForm";
+import CategoryBudgetsForm from "./components/UpdateBudgetsForm";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
@@ -70,6 +71,7 @@ const App = () => {
                 }
               />
               <Route path="/settings" element={<UpdateSettingsForm settings={settings} setSettings={setSettings} />} />
+              <Route path="/budgets" element={<CategoryBudgetsForm categoryBudgets={categoryBudgets} setCategoryBudgets={setCategoryBudgets} />} />
             </>
           ) : (
             <>
