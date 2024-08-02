@@ -23,7 +23,7 @@ const App = () => {
     };
     const fetchSettings = async () => {
       const fetchedSettings = await settingsService.index();
-      setSettings(fetchSettings);
+      setSettings(fetchedSettings);
     }
     fetchExpenses();
     fetchSettings();
