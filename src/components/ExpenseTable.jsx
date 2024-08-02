@@ -213,7 +213,7 @@ const ExpenseTable = (props) => {
                     return (
                       <TableRow key={expense.id}>
                         <TableCell>{expense.name}</TableCell>
-                        <TableCell>{expense.amount}</TableCell>
+                        <TableCell>${expense.amount}</TableCell>
                         <TableCell>{formatDate(expense.date)}</TableCell>
                         <TableCell>{expense.category}</TableCell>
                       </TableRow>
@@ -275,7 +275,7 @@ const ExpenseTable = (props) => {
                     return (
                       <TableRow key={expense.id}>
                         <TableCell>{expense.name}</TableCell>
-                        <TableCell>{expense.amount}</TableCell>
+                        <TableCell>${expense.amount}</TableCell>
                         <TableCell>{formatDate(expense.date)}</TableCell>
                         <TableCell>{expense.category}</TableCell>
                       </TableRow>
