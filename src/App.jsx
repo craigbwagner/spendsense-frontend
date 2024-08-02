@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import "./App.css";
 import SignupForm from "./components/SignupForm";
 import SigninForm from "./components/SigninForm";
@@ -60,6 +60,7 @@ const App = () => {
                   <ExpenseForm handleCreateExpense={handleCreateExpense} />
                 }
               />
+              <Route path="*" element={<Navigate to="/" />} />
               <Route path="/settings" element={<UpdateSettingsForm settings={settings} setSettings={setSettings} />} />
             </>
           ) : (
@@ -73,6 +74,7 @@ const App = () => {
                 path="/signin"
                 element={<SigninForm setUser={setUser} />}
               />
+              <Route path="*" element={<Navigate to="/signin" />} />
             </>
           )}
         </Routes>
