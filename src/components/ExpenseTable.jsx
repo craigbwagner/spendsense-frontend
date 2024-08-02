@@ -7,6 +7,16 @@ import {
   CardContent,
 } from "./ui/card";
 
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "./ui/table";
+
 const ExpenseTable = (props) => {
   return (
     <>
@@ -24,7 +34,26 @@ const ExpenseTable = (props) => {
               <CardDescription>All expenses for this week </CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Details: This is the first expense</p>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Name</TableHead>
+                    <TableHead>Amount</TableHead>
+                    <TableHead>Date</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {props.expenses.map((expense) => {
+                    return (
+                      <TableRow key={expense.id}>
+                        <TableCell>{expense.name}</TableCell>
+                        <TableCell>{expense.amount}</TableCell>
+                        <TableCell>{expense.date}</TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
             </CardContent>
           </Card>
         </TabsContent>
