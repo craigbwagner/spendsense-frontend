@@ -102,7 +102,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
                 <FormItem>
                   <FormLabel>Transportation</FormLabel>
                   <FormControl>
-                    <Input placeholder="Transportation" {...field} />
+                    <Input placeholder="Transportation" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -117,7 +117,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
                 <FormItem>
                   <FormLabel>Food/Groceries</FormLabel>
                   <FormControl>
-                    <Input placeholder="Food/Groceries" {...field} />
+                    <Input placeholder="Food/Groceries" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -132,7 +132,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
                 <FormItem>
                   <FormLabel>Utilities</FormLabel>
                   <FormControl>
-                    <Input placeholder="Utilities" {...field} />
+                    <Input placeholder="Utilities" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -147,7 +147,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
                 <FormItem>
                   <FormLabel>Clothing</FormLabel>
                   <FormControl>
-                    <Input placeholder="Clothing" {...field} />
+                    <Input placeholder="Clothing" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -162,7 +162,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
                 <FormItem>
                   <FormLabel>Medical</FormLabel>
                   <FormControl>
-                    <Input placeholder="Medical" {...field} />
+                    <Input placeholder="Medical" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -177,7 +177,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
                 <FormItem>
                   <FormLabel>Insurance</FormLabel>
                   <FormControl>
-                    <Input placeholder="Insurance" {...field} />
+                    <Input placeholder="Insurance" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -192,7 +192,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
                 <FormItem>
                   <FormLabel>Personal</FormLabel>
                   <FormControl>
-                    <Input placeholder="Personal" {...field} />
+                    <Input placeholder="Personal" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -207,7 +207,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
                 <FormItem>
                   <FormLabel>Education</FormLabel>
                   <FormControl>
-                    <Input placeholder="Education" {...field} />
+                    <Input placeholder="Education" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -222,7 +222,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
                 <FormItem>
                   <FormLabel>Entertainment</FormLabel>
                   <FormControl>
-                    <Input placeholder="Entertainment" {...field} />
+                    <Input placeholder="Entertainment" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -237,7 +237,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
                 <FormItem>
                   <FormLabel>Other</FormLabel>
                   <FormControl>
-                    <Input placeholder="Other" {...field} />
+                    <Input placeholder="Other" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
