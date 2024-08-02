@@ -5,6 +5,7 @@ import SignupForm from "./components/SignupForm";
 import SigninForm from "./components/SigninForm";
 import * as authService from "./services/authService";
 import Navbar from "./components/Navbar";
+import ExpenseForm from "./components/ExpenseForm";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
@@ -23,7 +24,10 @@ const App = () => {
         <Navbar handleSignout={handleSignout} />
         <Routes>
           {user ? (
-            <Route path="/" element={<h1>Home</h1>} />
+            <>
+              <Route path="/" element={<h1>Home</h1>} />
+              <Route path="/expense" element={<ExpenseForm />} />
+            </>
           ) : (
             <>
               <Route path="/" element={<h1>Home</h1>} />
