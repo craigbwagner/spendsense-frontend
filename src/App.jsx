@@ -9,6 +9,7 @@ import * as settingsService from "./services/settingsService";
 import * as categoryBudgetsService from "./services/categoryBudgetsService";
 import Navbar from "./components/Navbar";
 import ExpenseForm from "./components/ExpenseForm";
+import UnexpectedIncomeForm from "./components/UnexpectedIncomeForm";
 import UpdateSettingsForm from "./components/UpdateSettingsForm";
 import CategoryBudgetsForm from "./components/UpdateBudgetsForm";
 export const AuthedUserContext = createContext(null);
@@ -68,6 +69,12 @@ const App = () => {
                 path="/expense"
                 element={
                   <ExpenseForm handleCreateExpense={handleCreateExpense} />
+                }
+              />
+              <Route
+                path="/income"
+                element={
+                  <UnexpectedIncomeForm handleCreateExpense={handleCreateExpense} />
                 }
               />
               <Route path="*" element={<Navigate to="/" />} />
