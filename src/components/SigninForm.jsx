@@ -32,7 +32,6 @@ const SigninForm = (props) => {
   const handleSubmit = async (data) => {
     try {
       const user = await authService.signin(data);
-      console.log(user);
       props.setUser(user);
       navigate("/");
     } catch (err) {
