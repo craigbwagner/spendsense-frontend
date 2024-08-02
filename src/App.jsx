@@ -60,7 +60,7 @@ const App = () => {
                   <ExpenseForm handleCreateExpense={handleCreateExpense} />
                 }
               />
-              <Route path="/settings" element={<UpdateSettingsForm settings={settings} />} />
+              <Route path="/settings" element={<UpdateSettingsForm settings={settings} setSettings={setSettings} />} />
             </>
           ) : (
             <>

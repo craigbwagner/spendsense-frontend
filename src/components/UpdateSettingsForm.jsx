@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,7 +20,7 @@ const formSchema = z.object({
   savings_goal: z.coerce.number().nonnegative()
 });
 
-const UpdateSettingsForm = ({ settings }) => {
+const UpdateSettingsForm = ({ settings, setSettings }) => {
   const navigate = useNavigate();
 
   const form = useForm({
@@ -35,14 +34,14 @@ const UpdateSettingsForm = ({ settings }) => {
       monthly_income: settings.monthly_income,
       monthly_budget: settings.monthly_budget,
       savings_goal: settings.savings_goal
-    }
+    },
   });
 
   const handleSubmit = async (data) => {
     try {
-      const updatedSettings = await settingsService.update();
-      console.log(updatedSettings)
-      navigate("/")
+      const updatedSettings = await settingsService.update(data);
+      setSettings(updatedSettings);
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
