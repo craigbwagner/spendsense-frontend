@@ -14,16 +14,16 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import * as settingsService from "../services/settingsService"
-import { data } from "autoprefixer";
+
 const getSettings = async () => {
   const userSettings = await settingsService.index();
 
 }
 
 const formSchema = z.object({
-  monthly_income: z.coerce.number().positive(),
-  monthly_budget: z.coerce.number().positive(),
-  savings_goal: z.coerce.number().positive()
+  monthly_income: z.coerce.number().nonnegative(),
+  monthly_budget: z.coerce.number().nonnegative(),
+  savings_goal: z.coerce.number().nonnegative()
 });
 
 const UpdateSettingsForm = (props) => {
