@@ -81,13 +81,13 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
         >
           <FormField
             control={form.control}
-            name="monthly_income"
+            name="housing"
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel>Monthly Income</FormLabel>
+                  <FormLabel>Housing</FormLabel>
                   <FormControl>
-                    <Input placeholder="Monthly Income" {...field} />
+                    <Input placeholder="Housing" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -96,13 +96,13 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
           />
           <FormField
             control={form.control}
-            name="monthly_budget"
+            name="transportation"
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel>Monthly Budget</FormLabel>
+                  <FormLabel>Transportation</FormLabel>
                   <FormControl>
-                    <Input placeholder="Monthly Budget" {...field} />
+                    <Input placeholder="Transportation" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -111,13 +111,133 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
           />
           <FormField
             control={form.control}
-            name="savings_goal"
+            name="food_groceries"
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel>Monthly Savings Goal</FormLabel>
+                  <FormLabel>Food/Groceries</FormLabel>
                   <FormControl>
-                    <Input placeholder="Montly savings Goal" {...field} />
+                    <Input placeholder="Food/Groceries" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            control={form.control}
+            name="utilities"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Utilities</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Utilities" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            control={form.control}
+            name="clothing"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Clothing</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Clothing" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            control={form.control}
+            name="medical"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Medical</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Medical" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            control={form.control}
+            name="insurance"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Insurance</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Insurance" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            control={form.control}
+            name="personal"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Personal</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Personal" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            control={form.control}
+            name="education"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Education</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Education" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            control={form.control}
+            name="entertainment"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Entertainment</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Entertainment" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            control={form.control}
+            name="other"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Other</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Other" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -125,7 +245,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
             }}
           />
 
-          <Button type="submit">Save Settings</Button>
+          <Button type="submit">Save Budgets</Button>
         </form>
       </Form>
 
