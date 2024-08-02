@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -42,12 +42,13 @@ const SigninForm = (props) => {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center w-full h-full m-8">
+    <main className="m-4 flex max-w-md flex-col items-center justify-center rounded-md border-2 border-black px-12 py-4">
+      <h1 className="p-4 text-2xl font-bold"> Log in </h1>
       <Form {...form}>
         {message && <p className="text-red-500">{message}</p>}
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
-          className="flex flex-col w-full max-w-md gap-4"
+          className="flex w-full max-w-md flex-col gap-8"
         >
           <FormField
             control={form.control}
@@ -82,6 +83,12 @@ const SigninForm = (props) => {
           <Button type="submit">Submit </Button>
         </form>
       </Form>
+      <p className="mt-8 text-xs">
+        Don't have an account yet?{" "}
+        <Link className="font-semibold text-green-600" to="/signup">
+          Sign up
+        </Link>
+      </p>
     </main>
   );
 };
