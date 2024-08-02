@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -40,8 +39,6 @@ const formSchema = z.object({
 });
 
 const ExpenseForm = (props) => {
-  const navigate = useNavigate();
-
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
