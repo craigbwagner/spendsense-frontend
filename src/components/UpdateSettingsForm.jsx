@@ -63,7 +63,7 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
                 <FormItem>
                   <FormLabel>Monthly Income</FormLabel>
                   <FormControl>
-                    <Input placeholder="Monthly Income" {...field} />
+                    <Input placeholder="Monthly Income" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -78,7 +78,7 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
                 <FormItem>
                   <FormLabel>Monthly Budget</FormLabel>
                   <FormControl>
-                    <Input placeholder="Monthly Budget" {...field} />
+                    <Input placeholder="Monthly Budget" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -93,7 +93,7 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
                 <FormItem>
                   <FormLabel>Monthly Savings Goal</FormLabel>
                   <FormControl>
-                    <Input placeholder="Montly savings Goal" {...field} />
+                    <Input placeholder="Montly savings Goal" type="number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
