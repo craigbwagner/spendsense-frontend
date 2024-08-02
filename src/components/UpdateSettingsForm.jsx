@@ -14,8 +14,7 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import * as settingsService from "../services/settingsService"
-import ExpenseForm from "./ExpenseForm";
-
+import { data } from "autoprefixer";
 const getSettings = async () => {
   const userSettings = await settingsService.index();
 
@@ -33,7 +32,9 @@ const UpdateSettingsForm = (props) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-
+      monthly_income: 0,
+      monthly_budget: 0,
+      savings_goal: 0
     },
   });
 
@@ -47,7 +48,63 @@ const UpdateSettingsForm = (props) => {
     }
   }
   return (
-    <section className="flex">
+    <section className="flex flex-col items-center justify-center w-full h-full m-8">
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit((data) => {
+            handleSubmit(data);
+          })}
+          className="flex flex-col w-full max-w-md gap-4"
+        >
+          <FormField
+            control={form.control}
+            name="monthly_income"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Monthly Income</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Monthly Income" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            control={form.control}
+            name="monthly_budget"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Monthly Budget</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Monthly Budget" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            control={form.control}
+            name="savings_goal"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Monthly Savings Goal</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Montly savings Goal" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+
+          <Button type="submit">Save Settings</Button>
+        </form>
+      </Form>
 
     </section>
   )
