@@ -11,12 +11,13 @@ import Navbar from "./components/Navbar";
 import ExpenseForm from "./components/ExpenseForm";
 import UpdateSettingsForm from "./components/UpdateSettingsForm";
 import CategoryBudgetsForm from "./components/UpdateBudgetsForm";
+import Dashboard from "./components/Dashboard";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
   const [expenses, setExpenses] = useState([]);
-  const [settings, setSettings] = useState([])
+  const [settings, setSettings] = useState([]);
   const [categoryBudgets, setCategoryBudgets] = useState([]);
   const navigate = useNavigate();
 
@@ -28,11 +29,11 @@ const App = () => {
     const fetchSettings = async () => {
       const fetchedSettings = await settingsService.index();
       setSettings(fetchedSettings);
-    }
+    };
     const fetchCategoryBudgets = async () => {
       const fetchedCategoryBudgets = await categoryBudgetsService.index();
       setCategoryBudgets(fetchedCategoryBudgets);
-    }
+    };
     if (user) {
       fetchExpenses();
       fetchSettings();
@@ -71,8 +72,24 @@ const App = () => {
                 }
               />
               <Route path="*" element={<Navigate to="/" />} />
-              <Route path="/settings" element={<UpdateSettingsForm settings={settings} setSettings={setSettings} />} />
-              <Route path="/budgets" element={<CategoryBudgetsForm categoryBudgets={categoryBudgets} setCategoryBudgets={setCategoryBudgets} />} />
+              <Route
+                path="/settings"
+                element={
+                  <UpdateSettingsForm
+                    settings={settings}
+                    setSettings={setSettings}
+                  />
+                }
+              />
+              <Route
+                path="/budgets"
+                element={
+                  <CategoryBudgetsForm
+                    categoryBudgets={categoryBudgets}
+                    setCategoryBudgets={setCategoryBudgets}
+                  />
+                }
+              />
             </>
           ) : (
             <>
