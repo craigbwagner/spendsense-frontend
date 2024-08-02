@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthedUserContext } from "../App";
 
@@ -12,9 +12,15 @@ const Navbar = (props) => {
       </Link>
       <div className="flex gap-4">
         {user ? (
-          <button onClick={props.handleSignout} className="bg-none text-white">
-            Sign out
-          </button>
+          <>
+            <NavLink to="/budget" className={({ isActive }) =>
+              isActive ? "text-sky-800" : "" } >Budget</NavLink>
+            <NavLink to="/spending" className={({ isActive }) =>
+              isActive ? "text-sky-800" : "" } >Spending</NavLink>
+            <button onClick={props.handleSignout} className="bg-none text-white">
+              Sign out
+            </button>
+          </>
         ) : (
           <>
             <Link to="/signin" className="text-white">
