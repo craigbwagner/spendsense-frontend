@@ -99,39 +99,44 @@ const ExpenseTable = (props) => {
             Year
           </TabsTrigger>
         </TabsList>
-        <div className="mb-6">
-          <Label htmlFor="category-select" className="mb-2">
-            Filter by Category
-          </Label>
-          <Select
-            id="category-select"
-            value={selectedCategory}
-            onValueChange={setSelectedCategory}
-          >
-            <SelectTrigger className="w-48">
-              <SelectValue placeholder="All" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All</SelectItem>
-              <SelectItem value="food_groceries">Food</SelectItem>
-              <SelectItem value="transportation">Transportation</SelectItem>
-              <SelectItem value="housing">Housing</SelectItem>
-              <SelectItem value="other">Other</SelectItem>
-              <SelectItem value="entertainment">Entertainment</SelectItem>
-              <SelectItem value="clothing">Clothing</SelectItem>
-              <SelectItem value="utilities">Utilities</SelectItem>
-              <SelectItem value="medical">Medical</SelectItem>
-              <SelectItem value="insurance">Insurance</SelectItem>
-              <SelectItem value="personal">Personal</SelectItem>
-              <SelectItem value="education">Education</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+
         <TabsContent value="Week">
           <Card className="w-[800px]">
-            <CardHeader>
-              <CardTitle>This week's expenses</CardTitle>
-              <CardDescription>All expenses for this week </CardDescription>
+            <CardHeader className="flex flex-row items-start justify-between pb-8">
+              <div>
+                <CardTitle>This week's expenses</CardTitle>
+                <CardDescription>All expenses for this week </CardDescription>
+              </div>
+              <div className="mb-6">
+                <Label htmlFor="category-select" className="mb-2">
+                  Filter by Category
+                </Label>
+                <Select
+                  id="category-select"
+                  value={selectedCategory}
+                  onValueChange={setSelectedCategory}
+                >
+                  <SelectTrigger className="w-48">
+                    <SelectValue placeholder="All" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All</SelectItem>
+                    <SelectItem value="food_groceries">Food</SelectItem>
+                    <SelectItem value="transportation">
+                      Transportation
+                    </SelectItem>
+                    <SelectItem value="housing">Housing</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                    <SelectItem value="entertainment">Entertainment</SelectItem>
+                    <SelectItem value="clothing">Clothing</SelectItem>
+                    <SelectItem value="utilities">Utilities</SelectItem>
+                    <SelectItem value="medical">Medical</SelectItem>
+                    <SelectItem value="insurance">Insurance</SelectItem>
+                    <SelectItem value="personal">Personal</SelectItem>
+                    <SelectItem value="education">Education</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </CardHeader>
             <CardContent>
               <Table>
@@ -161,9 +166,41 @@ const ExpenseTable = (props) => {
         </TabsContent>
         <TabsContent value="Month">
           <Card className="w-[800px]">
-            <CardHeader>
-              <CardTitle>This month's expenses</CardTitle>
-              <CardDescription>All expenses for this month</CardDescription>
+            <CardHeader className="flex flex-row items-start justify-between pb-8">
+              <div>
+                <CardTitle>This month's expenses</CardTitle>
+                <CardDescription>All expenses for this month</CardDescription>
+              </div>
+              <div className="mb-6">
+                <Label htmlFor="category-select" className="mb-2">
+                  Filter by Category
+                </Label>
+                <Select
+                  id="category-select"
+                  value={selectedCategory}
+                  onValueChange={setSelectedCategory}
+                >
+                  <SelectTrigger className="w-48">
+                    <SelectValue placeholder="All" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All</SelectItem>
+                    <SelectItem value="food_groceries">Food</SelectItem>
+                    <SelectItem value="transportation">
+                      Transportation
+                    </SelectItem>
+                    <SelectItem value="housing">Housing</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                    <SelectItem value="entertainment">Entertainment</SelectItem>
+                    <SelectItem value="clothing">Clothing</SelectItem>
+                    <SelectItem value="utilities">Utilities</SelectItem>
+                    <SelectItem value="medical">Medical</SelectItem>
+                    <SelectItem value="insurance">Insurance</SelectItem>
+                    <SelectItem value="personal">Personal</SelectItem>
+                    <SelectItem value="education">Education</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </CardHeader>
             <CardContent>
               <Table>
@@ -193,9 +230,41 @@ const ExpenseTable = (props) => {
         </TabsContent>
         <TabsContent value="Year">
           <Card className="w-[800px]">
-            <CardHeader>
-              <CardTitle>This year's expenses</CardTitle>
-              <CardDescription>All expenses for this year</CardDescription>
+            <CardHeader className="flex flex-row items-start justify-between pb-8">
+              <div>
+                <CardTitle>This year's expenses</CardTitle>
+                <CardDescription>All expenses for this year</CardDescription>
+              </div>
+              <div className="mb-6">
+                <Label htmlFor="category-select" className="mb-2">
+                  Filter by Category
+                </Label>
+                <Select
+                  id="category-select"
+                  value={selectedCategory}
+                  onValueChange={setSelectedCategory}
+                >
+                  <SelectTrigger className="w-48">
+                    <SelectValue placeholder="All" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All</SelectItem>
+                    <SelectItem value="food_groceries">Food</SelectItem>
+                    <SelectItem value="transportation">
+                      Transportation
+                    </SelectItem>
+                    <SelectItem value="housing">Housing</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                    <SelectItem value="entertainment">Entertainment</SelectItem>
+                    <SelectItem value="clothing">Clothing</SelectItem>
+                    <SelectItem value="utilities">Utilities</SelectItem>
+                    <SelectItem value="medical">Medical</SelectItem>
+                    <SelectItem value="insurance">Insurance</SelectItem>
+                    <SelectItem value="personal">Personal</SelectItem>
+                    <SelectItem value="education">Education</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </CardHeader>
             <CardContent>
               <Table>
