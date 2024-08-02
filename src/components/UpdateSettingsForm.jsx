@@ -15,11 +15,6 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import * as settingsService from "../services/settingsService"
 
-const getSettings = async () => {
-  const userSettings = await settingsService.index();
-
-}
-
 const formSchema = z.object({
   monthly_income: z.coerce.number().nonnegative(),
   monthly_budget: z.coerce.number().nonnegative(),
