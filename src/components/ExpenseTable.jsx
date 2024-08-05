@@ -268,14 +268,12 @@ const ExpenseTable = (props) => {
                                   </AlertDialogHeader>
                                   <AlertDialogFooter>
                                     <AlertDialogCancel>
-                                      <Button variant="ghost">Cancel</Button>
+                                      Cancel
                                     </AlertDialogCancel>
-                                    <AlertDialogAction>
-                                      <Button
-                                        onClick={() => handleDelete(expense.id)}
-                                      >
-                                        Delete
-                                      </Button>
+                                    <AlertDialogAction
+                                      onClick={() => handleDelete(expense.id)}
+                                    >
+                                      delete
                                     </AlertDialogAction>
                                   </AlertDialogFooter>
                                 </AlertDialogContent>

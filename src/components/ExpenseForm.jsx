@@ -52,6 +52,9 @@ const ExpenseForm = (props) => {
       amount: props.expense?.amount || "",
       date: formattedDate || "",
     },
+    values: {
+      category: props.expense?.category || null,
+    },
   });
 
   const handleSubmit = async (data) => {
@@ -67,8 +70,6 @@ const ExpenseForm = (props) => {
       console.log(err);
     }
   };
-
-  const defaultCategory = props.expense?.category || null;
 
   return (
     <main>
@@ -132,10 +133,7 @@ const ExpenseForm = (props) => {
               return (
                 <FormItem>
                   <FormLabel>Category</FormLabel>
-                  <Select
-                    defaultValue={defaultCategory}
-                    onValueChange={field.onChange}
-                  >
+                  <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="category" />
