@@ -159,20 +159,24 @@ const ExpenseTable = (props) => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredExpenses(activeTab.toLowerCase()).map((expense) => {
-                return (
-                  <TableRow key={expense.id}>
-                    <TableCell>{expense.name}</TableCell>
-                    <TableCell>${expense.amount}</TableCell>
-                    <TableCell>{formatDate(expense.date)}</TableCell>
-                    <TableCell>
-                      {expense.category == "food_groceries"
-                        ? "food"
-                        : expense.category}
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
+              {filteredExpenses(activeTab.toLowerCase())
+                .sort((a, b) => {
+                  return new Date(b.date) - new Date(a.date);
+                })
+                .map((expense) => {
+                  return (
+                    <TableRow key={expense.id}>
+                      <TableCell>{expense.name}</TableCell>
+                      <TableCell>${expense.amount}</TableCell>
+                      <TableCell>{formatDate(expense.date)}</TableCell>
+                      <TableCell>
+                        {expense.category == "food_groceries"
+                          ? "food"
+                          : expense.category}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
             </TableBody>
           </Table>
         </CardContent>

@@ -9,13 +9,6 @@ import {
   FormLabel,
   FormMessage,
 } from "./ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
@@ -23,22 +16,9 @@ const formSchema = z.object({
   name: z.string().min(5).max(40),
   amount: z.coerce.number().positive().min(0.01),
   date: z.coerce.date(),
-  category: z.enum([
-    "food_groceries",
-    "transportation",
-    "housing",
-    "other",
-    "entertainment",
-    "clothing",
-    "utilities",
-    "medical",
-    "insurance",
-    "personal",
-    "education",
-  ]),
 });
 
-const ExpenseForm = (props) => {
+const UnexpectedIncomeForm = (props) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,6 +29,8 @@ const ExpenseForm = (props) => {
   });
 
   const handleSubmit = async (data) => {
+    data.amount *= -1;
+    data.category = "income";
     props.handleCreateExpense(data);
     form.reset();
   };
@@ -70,7 +52,7 @@ const ExpenseForm = (props) => {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="name" {...field} />
+                    <Input placeholder="Name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -108,43 +90,6 @@ const ExpenseForm = (props) => {
             }}
           />
 
-          <FormField
-            control={form.control}
-            name="category"
-            render={({ field }) => {
-              return (
-                <FormItem>
-                  <FormLabel>Category</FormLabel>
-                  <Select onValueChange={field.onChange}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="category" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="food_groceries">Food</SelectItem>
-                      <SelectItem value="transportation">
-                        Transportation
-                      </SelectItem>
-                      <SelectItem value="housing">Housing</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                      <SelectItem value="entertainment">
-                        Entertainment
-                      </SelectItem>
-                      <SelectItem value="clothing">Clothing</SelectItem>
-                      <SelectItem value="utilities">Utilities</SelectItem>
-                      <SelectItem value="medical">Medical</SelectItem>
-                      <SelectItem value="insurance">Insurance</SelectItem>
-                      <SelectItem value="personal">Personal</SelectItem>
-                      <SelectItem value="education">Education</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          />
-
           <Button type="submit">Submit</Button>
         </form>
       </Form>
@@ -152,4 +97,4 @@ const ExpenseForm = (props) => {
   );
 };
 
-export default ExpenseForm;
+export default UnexpectedIncomeForm;

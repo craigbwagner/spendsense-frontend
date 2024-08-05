@@ -9,6 +9,7 @@ import * as settingsService from "./services/settingsService";
 import * as categoryBudgetsService from "./services/categoryBudgetsService";
 import Navbar from "./components/Navbar";
 import ExpenseForm from "./components/ExpenseForm";
+import UnexpectedIncomeForm from "./components/UnexpectedIncomeForm";
 import UpdateSettingsForm from "./components/UpdateSettingsForm";
 import CategoryBudgetsForm from "./components/UpdateBudgetsForm";
 import Dashboard from "./components/Dashboard";
@@ -71,6 +72,14 @@ const App = () => {
                   <ExpenseForm handleCreateExpense={handleCreateExpense} />
                 }
               />
+              <Route
+                path="/income"
+                element={
+                  <UnexpectedIncomeForm
+                    handleCreateExpense={handleCreateExpense}
+                  />
+                }
+              />
               <Route path="*" element={<Navigate to="/" />} />
               <Route
                 path="/settings"
@@ -93,6 +102,24 @@ const App = () => {
               <Route
                 path="/dashboard"
                 element={<Dashboard expenses={expenses} />}
+              />
+              <Route
+                path="/settings"
+                element={
+                  <UpdateSettingsForm
+                    settings={settings}
+                    setSettings={setSettings}
+                  />
+                }
+              />
+              <Route
+                path="/budget"
+                element={
+                  <CategoryBudgetsForm
+                    categoryBudgets={categoryBudgets}
+                    setCategoryBudgets={setCategoryBudgets}
+                  />
+                }
               />
             </>
           ) : (
