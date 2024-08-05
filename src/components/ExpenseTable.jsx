@@ -227,6 +227,7 @@ const ExpenseTable = (props) => {
                           <DropdownMenuContent align="end">
                             <DropdownMenuLabel>Actions</DropdownMenuLabel>
                             <DropdownMenuItem
+                              className="p-0"
                               onSelect={(e) => e.preventDefault()}
                             >
                               <Dialog open={open} onOpenChange={setOpen}>
@@ -250,6 +251,7 @@ const ExpenseTable = (props) => {
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem
+                              className="p-0"
                               onSelect={(e) => e.preventDefault()}
                             >
                               <AlertDialog>
