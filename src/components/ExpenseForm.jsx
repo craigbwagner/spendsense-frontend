@@ -63,11 +63,25 @@ const ExpenseForm = (props) => {
     try {
       if (props.handleCreateExpense) {
         await props.handleCreateExpense(data);
-        toast.success("Expense added successfully");
+        toast.success(`${data.name} created successfully`, {
+          cancel: {
+            label: "Dismiss",
+            onClick: () => {
+              toast.dismiss();
+            },
+          },
+        });
       } else {
         props.handleUpdateExpense(props.expense.id, data);
         props.setOpen(false);
-        toast.success("Expense updated successfully");
+        toast.success(`${data.name} updated successfully `, {
+          cancel: {
+            label: "Dismiss",
+            onClick: () => {
+              toast.dismiss();
+            },
+          },
+        });
       }
       form.reset();
     } catch (err) {

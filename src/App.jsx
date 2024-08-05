@@ -12,6 +12,7 @@ import UnexpectedIncomeForm from "./components/UnexpectedIncomeForm";
 import UpdateSettingsForm from "./components/UpdateSettingsForm";
 import CategoryBudgetsForm from "./components/UpdateBudgetsForm";
 import Dashboard from "./components/Dashboard";
+import { toast } from "sonner";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
@@ -78,9 +79,25 @@ const App = () => {
         (expense) => expense.id !== expenseId,
       );
       setExpenses(updatedExpenses);
+      toast.success("Expense deleted successfully", {
+        cancel: {
+          label: "Dismiss",
+          onClick: () => {
+            toast.dismiss();
+          },
+        },
+      });
     } catch (err) {
       console.log(err);
       console.log("error");
+      toast.error("Error deleting expense", {
+        cancel: {
+          label: "Dismiss",
+          onClick: () => {
+            toast.dismiss();
+          },
+        },
+      });
     }
   };
 
