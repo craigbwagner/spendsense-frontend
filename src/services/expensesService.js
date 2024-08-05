@@ -7,7 +7,7 @@ const index = async () => {
     });
     return res.json();
   } catch (err) {
-    throw new Error(err);
+    console.log(err);
   }
 };
 
@@ -23,7 +23,7 @@ const create = async (expenseFormData) => {
     });
     return res.json();
   } catch (err) {
-    throw new Error(err);
+    console.log(err);
   }
 };
 
@@ -40,7 +40,7 @@ const update = async (expenseId, expenseFormData) => {
     const updatedExpense = await res.json();
     return updatedExpense;
   } catch (err) {
-    throw new Error(err);
+    console.log(err);
   }
 };
 
@@ -55,7 +55,8 @@ const deleteExpense = async (expenseId) => {
     });
     return res.json();
   } catch (err) {
-    throw new Error(err);
+    console.log(err);
+    console.log("error");
   }
 };
 

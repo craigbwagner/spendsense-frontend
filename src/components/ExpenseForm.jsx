@@ -43,7 +43,7 @@ const formSchema = z.object({
 
 const ExpenseForm = (props) => {
   let date = props.expense?.date;
-  let formattedDate = date ? moment(date).format("YYYY-MM-DD") : "";
+  let formattedDate = date ? moment.utc(date).format("YYYY-MM-DD") : "";
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -71,7 +71,7 @@ const ExpenseForm = (props) => {
   const defaultCategory = props.expense?.category || null;
 
   return (
-    <main className="m-8 flex h-full w-full flex-col items-center justify-center">
+    <main>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => {

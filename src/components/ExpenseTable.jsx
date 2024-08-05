@@ -68,8 +68,7 @@ const ExpenseTable = (props) => {
   const [open, setOpen] = useState(false);
 
   const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "short", day: "2-digit" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    return moment.utc(dateString).format("MMM Do YYYY");
   };
 
   const isThisWeek = (dateString) => {
