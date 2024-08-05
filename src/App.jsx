@@ -52,7 +52,21 @@ const App = () => {
     try {
       const createdExpense = await expensesService.create(expenseFormData);
       setExpenses([...expenses, createdExpense]);
-      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUpdateExpense = async (expenseId, expenseFormData) => {
+    try {
+      const updatedExpense = await expensesService.update(
+        expenseId,
+        expenseFormData,
+      );
+      const updatedExpenses = expenses.map((expense) =>
+        expense.id === expenseId ? updatedExpense : expense,
+      );
+      setExpenses(updatedExpenses);
     } catch (err) {
       console.log(err);
     }
@@ -78,12 +92,6 @@ const App = () => {
           {user ? (
             <>
               <Route path="/" element={<h1>Home</h1>} />
-              <Route
-                path="/expense"
-                element={
-                  <ExpenseForm handleCreateExpense={handleCreateExpense} />
-                }
-              />
               <Route
                 path="/income"
                 element={
@@ -117,6 +125,8 @@ const App = () => {
                   <Dashboard
                     expenses={expenses}
                     handleDeleteExpense={handleDeleteExpense}
+                    handleUpdateExpense={handleUpdateExpense}
+                    handleCreateExpense={handleCreateExpense}
                   />
                 }
               />

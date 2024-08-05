@@ -48,9 +48,19 @@ import {
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
 
-import { Button } from "./ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 
+import { Button } from "./ui/button";
 import { Label } from "./ui/label";
+
+import ExpenseForm from "./ExpenseForm";
 
 const ExpenseTable = (props) => {
   const [activeTab, setActiveTab] = useState("Week");
@@ -216,7 +226,26 @@ const ExpenseTable = (props) => {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
                             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuItem asChild>
+                              <Dialog>
+                                <DialogTrigger className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-gray-100 focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                  Edit
+                                </DialogTrigger>
+                                <DialogContent>
+                                  <DialogHeader>
+                                    <DialogTitle>Edit expense</DialogTitle>
+                                  </DialogHeader>
+                                  <DialogDescription>
+                                    <ExpenseForm
+                                      expense={expense}
+                                      handleUpdateExpense={
+                                        props.handleUpdateExpense
+                                      }
+                                    />
+                                  </DialogDescription>
+                                </DialogContent>
+                              </Dialog>
+                            </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem asChild>
                               <AlertDialog>
