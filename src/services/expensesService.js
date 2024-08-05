@@ -9,14 +9,14 @@ const index = async () => {
   } catch (err) {
     throw new Error(err);
   }
-}
+};
 
 const create = async (expenseFormData) => {
   try {
     const res = await fetch(BACKEND_URL, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}` ,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(expenseFormData),
@@ -25,30 +25,31 @@ const create = async (expenseFormData) => {
   } catch (err) {
     throw new Error(err);
   }
-}
+};
 
 const update = async (expenseId, expenseFormData) => {
   try {
     const res = await fetch(`${BACKEND_URL}/${expenseId}`, {
       method: "PUT",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}` ,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(expenseFormData),
     });
-    return res.json();
+    const updatedExpense = await res.json();
+    return updatedExpense;
   } catch (err) {
     throw new Error(err);
   }
-}
+};
 
 const deleteExpense = async (expenseId) => {
   try {
     const res = await fetch(`${BACKEND_URL}/${expenseId}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}` ,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
       },
     });
@@ -56,6 +57,6 @@ const deleteExpense = async (expenseId) => {
   } catch (err) {
     throw new Error(err);
   }
-}
+};
 
-export { index, create, update, deleteExpense }
+export { index, create, update, deleteExpense };

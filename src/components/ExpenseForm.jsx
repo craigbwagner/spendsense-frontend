@@ -16,8 +16,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+
+import moment from "moment";
 
 const formSchema = z.object({
   name: z.string().min(5).max(40),
@@ -39,28 +42,42 @@ const formSchema = z.object({
 });
 
 const ExpenseForm = (props) => {
+  let date = props.expense?.date;
+  let formattedDate = date ? moment(date).format("YYYY-MM-DD") : "";
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      amount: "",
-      date: "",
+      name: props.expense?.name || "",
+      amount: props.expense?.amount || "",
+      date: formattedDate || "",
     },
   });
 
   const handleSubmit = async (data) => {
-    props.handleCreateExpense(data);
-    form.reset();
+    try {
+      if (props.handleCreateExpense) {
+        await props.handleCreateExpense(data);
+      } else {
+        props.handleUpdateExpense(props.expense.id, data);
+        props.setOpen(false);
+      }
+      form.reset();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
+  const defaultCategory = props.expense?.category || null;
+
   return (
-    <main className="flex flex-col items-center justify-center w-full h-full m-8">
+    <main className="m-8 flex h-full w-full flex-col items-center justify-center">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => {
             handleSubmit(data);
           })}
-          className="flex flex-col w-full max-w-md gap-4"
+          className="flex w-full max-w-md flex-col gap-4"
         >
           <FormField
             control={form.control}
@@ -115,7 +132,10 @@ const ExpenseForm = (props) => {
               return (
                 <FormItem>
                   <FormLabel>Category</FormLabel>
-                  <Select onValueChange={field.onChange}>
+                  <Select
+                    defaultValue={defaultCategory}
+                    onValueChange={field.onChange}
+                  >
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="category" />

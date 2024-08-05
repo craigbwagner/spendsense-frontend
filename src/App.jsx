@@ -8,7 +8,6 @@ import * as expensesService from "./services/expensesService";
 import * as settingsService from "./services/settingsService";
 import * as categoryBudgetsService from "./services/categoryBudgetsService";
 import Navbar from "./components/Navbar";
-import ExpenseForm from "./components/ExpenseForm";
 import UnexpectedIncomeForm from "./components/UnexpectedIncomeForm";
 import UpdateSettingsForm from "./components/UpdateSettingsForm";
 import CategoryBudgetsForm from "./components/UpdateBudgetsForm";

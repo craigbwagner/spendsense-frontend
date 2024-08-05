@@ -65,6 +65,7 @@ import ExpenseForm from "./ExpenseForm";
 const ExpenseTable = (props) => {
   const [activeTab, setActiveTab] = useState("Week");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [open, setOpen] = useState(false);
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "short", day: "2-digit" };
@@ -217,7 +218,7 @@ const ExpenseTable = (props) => {
                           : expense.category}
                       </TableCell>
                       <TableCell>
-                        <DropdownMenu>
+                        <DropdownMenu modal={false}>
                           <DropdownMenuTrigger asChild>
                             <Button variant="ghost" className="h-8 w-8 p-0">
                               <span className="sr-only">Open menu</span>
@@ -226,8 +227,10 @@ const ExpenseTable = (props) => {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
                             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem asChild>
-                              <Dialog>
+                            <DropdownMenuItem
+                              onSelect={(e) => e.preventDefault()}
+                            >
+                              <Dialog open={open} onOpenChange={setOpen}>
                                 <DialogTrigger className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-gray-100 focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                                   Edit
                                 </DialogTrigger>
@@ -235,19 +238,21 @@ const ExpenseTable = (props) => {
                                   <DialogHeader>
                                     <DialogTitle>Edit expense</DialogTitle>
                                   </DialogHeader>
-                                  <DialogDescription>
-                                    <ExpenseForm
-                                      expense={expense}
-                                      handleUpdateExpense={
-                                        props.handleUpdateExpense
-                                      }
-                                    />
-                                  </DialogDescription>
+                                  <DialogDescription></DialogDescription>
+                                  <ExpenseForm
+                                    expense={expense}
+                                    handleUpdateExpense={
+                                      props.handleUpdateExpense
+                                    }
+                                    setOpen={setOpen}
+                                  />
                                 </DialogContent>
                               </Dialog>
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem asChild>
+                            <DropdownMenuItem
+                              onSelect={(e) => e.preventDefault()}
+                            >
                               <AlertDialog>
                                 <AlertDialogTrigger className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm text-red-500 outline-none transition-colors hover:bg-gray-100 focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                                   Delete
