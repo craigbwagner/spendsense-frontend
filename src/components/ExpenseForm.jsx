@@ -19,6 +19,8 @@ import {
 
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { toast } from "sonner";
+import { Toaster } from "sonner";
 
 import moment from "moment";
 
@@ -43,7 +45,7 @@ const formSchema = z.object({
 
 const ExpenseForm = (props) => {
   let date = props.expense?.date;
-  let formattedDate = date ? moment.utc(date).format("YYYY-MM-DD") : "";
+  let formattedDate = date ? moment.utc(date).format("YYYY-MM-DD") : null;
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -61,9 +63,11 @@ const ExpenseForm = (props) => {
     try {
       if (props.handleCreateExpense) {
         await props.handleCreateExpense(data);
+        toast.success("Expense added successfully");
       } else {
         props.handleUpdateExpense(props.expense.id, data);
         props.setOpen(false);
+        toast.success("Expense updated successfully");
       }
       form.reset();
     } catch (err) {
@@ -125,7 +129,6 @@ const ExpenseForm = (props) => {
               );
             }}
           />
-
           <FormField
             control={form.control}
             name="category"
@@ -162,10 +165,10 @@ const ExpenseForm = (props) => {
               );
             }}
           />
-
           <Button type="submit">Submit</Button>
         </form>
       </Form>
+      <Toaster />
     </main>
   );
 };

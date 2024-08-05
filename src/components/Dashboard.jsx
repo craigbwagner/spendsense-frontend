@@ -11,7 +11,6 @@ import {
 const Dashboard = (props) => {
   return (
     <div>
-      <h1>Dashboard</h1>
       <ExpenseTable {...props} />
 
       <Card className="m-24 max-h-[600px] w-fit min-w-[400px] max-w-[800px] shadow-md">
