@@ -156,7 +156,7 @@ const ExpenseTable = (props) => {
         <TabsContent value="Month"></TabsContent>
         <TabsContent value="Year"></TabsContent>
       </Tabs>
-      <Card className="max-h-[600px] w-[800px] overflow-auto shadow-md">
+      <Card className="scrollbar-thin max-h-[500px] w-[800px] overflow-auto shadow-md">
         <CardHeader className="flex flex-row items-start justify-between pb-8">
           <div>
             <CardTitle>This {activeTab}'s expenses</CardTitle>

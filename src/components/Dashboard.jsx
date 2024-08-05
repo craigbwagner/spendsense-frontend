@@ -14,7 +14,7 @@ const Dashboard = (props) => {
       <h1>Dashboard</h1>
       <ExpenseTable {...props} />
 
-      <Card className="m-24 max-h-[600px] w-auto max-w-[800px] shadow-md">
+      <Card className="m-24 max-h-[600px] w-fit min-w-[400px] max-w-[800px] shadow-md">
         <CardHeader>
           <CardTitle>Add Expense</CardTitle>
           <CardDescription></CardDescription>
