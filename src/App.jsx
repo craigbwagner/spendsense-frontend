@@ -117,7 +117,7 @@ const App = () => {
                   />
                 }
               />
-              <Route path="*" element={<Navigate to="/" />} />
+
               <Route
                 path="/settings"
                 element={
@@ -144,24 +144,6 @@ const App = () => {
                     handleDeleteExpense={handleDeleteExpense}
                     handleUpdateExpense={handleUpdateExpense}
                     handleCreateExpense={handleCreateExpense}
-                  />
-                }
-              />
-              <Route
-                path="/settings"
-                element={
-                  <UpdateSettingsForm
-                    settings={settings}
-                    setSettings={setSettings}
-                  />
-                }
-              />
-              <Route
-                path="/budget"
-                element={
-                  <CategoryBudgetsForm
-                    categoryBudgets={categoryBudgets}
-                    setCategoryBudgets={setCategoryBudgets}
                   />
                 }
               />
