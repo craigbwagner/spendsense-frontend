@@ -27,6 +27,17 @@ import {
   SelectItem,
 } from "./ui/select";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+
+import { Button } from "./ui/button";
+
 import { Label } from "./ui/label";
 
 const ExpenseTable = (props) => {
@@ -96,6 +107,14 @@ const ExpenseTable = (props) => {
     }
   };
 
+  const handleDelete = async (expenseId) => {
+    try {
+      await props.handleDeleteExpense(expenseId);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <main className="m-24 w-[800px]">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -156,6 +175,7 @@ const ExpenseTable = (props) => {
                 <TableHead>Amount</TableHead>
                 <TableHead>Date</TableHead>
                 <TableHead>Category</TableHead>
+                <TableHead className="w-8"></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -174,6 +194,27 @@ const ExpenseTable = (props) => {
                           ? "food"
                           : expense.category}
                       </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" className="h-8 w-8 p-0">
+                              <span className="sr-only">Open menu</span>
+                              ...
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem
+                              className="text-red-500"
+                              onClick={() => handleDelete(expense.id)}
+                            >
+                              Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
                     </TableRow>
                   );
                 })}
@@ -181,6 +222,20 @@ const ExpenseTable = (props) => {
           </Table>
         </CardContent>
       </Card>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="h-8 w-8 p-0">
+            <span className="sr-only">Open menu</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuItem>Copy payment ID</DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>View customer</DropdownMenuItem>
+          <DropdownMenuItem>View payment details</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </main>
   );
 };

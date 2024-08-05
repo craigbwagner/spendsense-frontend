@@ -58,6 +58,18 @@ const App = () => {
     }
   };
 
+  const handleDeleteExpense = async (expenseId) => {
+    try {
+      await expensesService.deleteExpense(expenseId);
+      const updatedExpenses = expenses.filter(
+        (expense) => expense.id !== expenseId,
+      );
+      setExpenses(updatedExpenses);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <AuthedUserContext.Provider value={user}>
@@ -101,7 +113,12 @@ const App = () => {
               />
               <Route
                 path="/dashboard"
-                element={<Dashboard expenses={expenses} />}
+                element={
+                  <Dashboard
+                    expenses={expenses}
+                    handleDeleteExpense={handleDeleteExpense}
+                  />
+                }
               />
               <Route
                 path="/settings"
