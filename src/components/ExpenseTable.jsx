@@ -36,6 +36,18 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "./ui/alert-dialog";
+
 import { Button } from "./ui/button";
 
 import { Label } from "./ui/label";
@@ -206,11 +218,35 @@ const ExpenseTable = (props) => {
                             <DropdownMenuLabel>Actions</DropdownMenuLabel>
                             <DropdownMenuItem>Edit</DropdownMenuItem>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem
-                              className="text-red-500"
-                              onClick={() => handleDelete(expense.id)}
-                            >
-                              Delete
+                            <DropdownMenuItem asChild>
+                              <AlertDialog>
+                                <AlertDialogTrigger className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm text-red-500 outline-none transition-colors hover:bg-gray-100 focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                  Delete
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                  <AlertDialogHeader>
+                                    <AlertDialogTitle>
+                                      Are you sure you want to delete this?
+                                    </AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                      This action cannot be undone. This will
+                                      permanently delete the expense.
+                                    </AlertDialogDescription>
+                                  </AlertDialogHeader>
+                                  <AlertDialogFooter>
+                                    <AlertDialogCancel>
+                                      <Button variant="ghost">Cancel</Button>
+                                    </AlertDialogCancel>
+                                    <AlertDialogAction>
+                                      <Button
+                                        onClick={() => handleDelete(expense.id)}
+                                      >
+                                        Delete
+                                      </Button>
+                                    </AlertDialogAction>
+                                  </AlertDialogFooter>
+                                </AlertDialogContent>
+                              </AlertDialog>
                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
