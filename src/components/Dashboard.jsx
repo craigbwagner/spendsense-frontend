@@ -22,7 +22,11 @@ const Dashboard = (props) => {
       <div className="grid gap-8">
         <div className="flex justify-between gap-8">
           <CategoriesPieChart className="flex-1" expenses={props.expenses} />
-          <ExpensesRadialChart className="flex-1" expenses={props.expenses} />
+          <ExpensesRadialChart
+            className="flex-1"
+            expenses={props.expenses}
+            settings={props.settings}
+          />
         </div>
         <ExpenseLineChart expenses={props.expenses} settings={props.settings} />
       </div>

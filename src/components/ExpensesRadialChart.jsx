@@ -1,5 +1,6 @@
 import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
 import moment from "moment";
+import { TrendingUp } from "lucide-react";
 
 import {
   Card,
@@ -43,6 +44,10 @@ export function ExpensesRadialChart(props) {
   const dayOfMonth = moment().date();
   const projectedExpenses = totalExpenses + (totalExpenses / dayOfMonth) * 31;
 
+  const budget = props.settings.monthly_budget;
+
+  const overShooting = budget - projectedExpenses;
+
   const chartData = [
     {
       month: thisMonth.format("MMMM"),
@@ -52,7 +57,7 @@ export function ExpensesRadialChart(props) {
   ];
 
   return (
-    <Card className="flex min-w-[350px] flex-col shadow-md">
+    <Card className="flex min-w-[300px] flex-col shadow-md">
       <CardHeader className="items-center pb-0">
         <CardTitle>Projected Monthly Expenses</CardTitle>
         <CardDescription>
@@ -117,9 +122,15 @@ export function ExpensesRadialChart(props) {
           </RadialBarChart>
         </ChartContainer>
       </CardContent>
+
       <CardFooter className="flex-col gap-2 text-sm">
+        <div className="flex items-center gap-2 font-medium leading-none">
+          Projected to{" "}
+          {overShooting > 0 ? "stay within budget" : "overshoot budget"}
+          <TrendingUp className="h-4 w-4" />
+        </div>
         <div className="leading-none text-muted-foreground">
-          Showing projected expenses for the month of January
+          Showing projected expenses for the month of {thisMonth.format("MMMM")}
         </div>
       </CardFooter>
     </Card>
