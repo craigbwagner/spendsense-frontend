@@ -1,5 +1,5 @@
-import { TrendingUp } from "lucide-react";
 import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
+import moment from "moment";
 
 import {
   Card,
@@ -9,32 +9,55 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-const chartData = [{ month: "january", desktop: 1260, mobile: 570 }];
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  expenses: {
+    label: "Expenses",
     color: "hsl(var(--chart-1))",
   },
-  mobile: {
-    label: "Mobile",
+  projectedExpenses: {
+    label: "Projected Expenses",
     color: "hsl(var(--chart-2))",
   },
 };
 
 export function ExpensesRadialChart(props) {
-  const totalVisitors = chartData[0].desktop + chartData[0].mobile;
+  const thisMonth = moment().startOf("month");
+  const monthlyExpenses = props.expenses.filter((expense) => {
+    const expenseDate = moment.utc(expense.date);
+    return (
+      expenseDate.isSameOrAfter(thisMonth) && expense.category !== "income"
+    );
+  });
+
+  const totalExpenses = monthlyExpenses.reduce((total, expense) => {
+    return total + Number(expense.amount);
+  }, 0);
+
+  const dayOfMonth = moment().date();
+  const projectedExpenses = totalExpenses + (totalExpenses / dayOfMonth) * 31;
+
+  const chartData = [
+    {
+      month: thisMonth.format("MMMM"),
+      expenses: totalExpenses,
+      projectedExpenses,
+    },
+  ];
 
   return (
-    <Card className="flex max-h-[400px] max-w-[400px] flex-col shadow-md">
+    <Card className="flex min-w-[350px] flex-col shadow-md">
       <CardHeader className="items-center pb-0">
         <CardTitle>Projected Monthly Expenses</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardDescription>
+          {thisMonth.format("MMMM")} {moment().year()}
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-1 items-center pb-0">
         <ChartContainer
@@ -62,14 +85,14 @@ export function ExpensesRadialChart(props) {
                           y={(viewBox.cy || 0) - 16}
                           className="fill-foreground text-2xl font-bold"
                         >
-                          {totalVisitors.toLocaleString()}
+                          ${String(projectedExpenses).split(".")[0]}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 4}
                           className="fill-muted-foreground"
                         >
-                          Visitors
+                          Projected Expenses
                         </tspan>
                       </text>
                     );
@@ -78,28 +101,25 @@ export function ExpensesRadialChart(props) {
               />
             </PolarRadiusAxis>
             <RadialBar
-              dataKey="desktop"
+              dataKey="projectedExpenses"
+              fill="var(--color-projectedExpenses)"
               stackId="a"
               cornerRadius={5}
-              fill="var(--color-desktop)"
               className="stroke-transparent stroke-2"
             />
             <RadialBar
-              dataKey="mobile"
-              fill="var(--color-mobile)"
+              dataKey="expenses"
               stackId="a"
               cornerRadius={5}
+              fill="var(--color-expenses)"
               className="stroke-transparent stroke-2"
             />
           </RadialBarChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
         <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+          Showing projected expenses for the month of January
         </div>
       </CardFooter>
     </Card>

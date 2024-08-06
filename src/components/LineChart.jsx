@@ -95,7 +95,7 @@ export function ExpenseLineChart(props) {
     ((thisMonthExpenses - lastMonthExpenses) / lastMonthExpenses) * 100;
 
   return (
-    <Card className="min-w-[400px] max-w-[800px] shadow-md">
+    <Card className="min-w-[400px] shadow-md">
       <CardHeader>
         <CardTitle>Income and expenses</CardTitle>
         <CardDescription>{`${moment.utc(thisMonth).format("MMMM")} - ${moment.utc(sixMonthsAgo).format("MMMM")}, ${moment.utc().year()} `}</CardDescription>

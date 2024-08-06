@@ -9,6 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
 import {
   ChartContainer,
@@ -164,9 +165,12 @@ const CategoriesPieChart = ({ expenses }) => {
     },
   };
   return (
-    <Card className="flex max-h-[400px] max-w-[400px] flex-col shadow-md">
+    <Card className="flex max-h-[400px] min-w-[350px] flex-col shadow-md">
       <CardHeader className="items-center pb-0">
         <CardTitle>{monthName} Expenses</CardTitle>
+        <CardDescription>
+          {monthName} {moment().year()}
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -189,7 +193,7 @@ const CategoriesPieChart = ({ expenses }) => {
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="leading-none text-muted-foreground">
-          Showing expenses by category for {monthName}
+          Showing expenses by category
         </div>
       </CardFooter>
     </Card>
