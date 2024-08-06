@@ -33,9 +33,6 @@ const CategoriesPieChart = ({ expenses }) => {
     );
   });
 
-  console.log("Expenses: ", expenses);
-  console.log("Month expenses: ", thisMonthExpenses);
-
   categories.forEach((category) => {
     const categoryExpenses = thisMonthExpenses.filter((expense) => {
       return expense.category === category});
