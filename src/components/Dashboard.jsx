@@ -3,6 +3,7 @@ import ExpenseForm from "./ExpenseForm";
 import { ExpenseLineChart } from "./LineChart";
 import { Card, CardHeader, CardContent, CardTitle } from "./ui/card";
 import CategoriesPieChart from "./CategoriesPieChart";
+import { ExpensesRadialChart } from "./ExpensesRadialChart";
 
 const Dashboard = (props) => {
   return (
@@ -20,6 +21,7 @@ const Dashboard = (props) => {
       </div>
       <div className="grid gap-8">
         <CategoriesPieChart expenses={props.expenses} />
+        <ExpensesRadialChart />
         <ExpenseLineChart expenses={props.expenses} settings={props.settings} />
       </div>
     </main>
