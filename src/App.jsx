@@ -81,7 +81,7 @@ const App = () => {
               <Route path="*" element={<Navigate to="/" />} />
               <Route path="/settings" element={<UpdateSettingsForm settings={settings} setSettings={setSettings} />} />
               <Route path="/budget" element={<CategoryBudgetsForm categoryBudgets={categoryBudgets} setCategoryBudgets={setCategoryBudgets} />} />
-              <Route path="/piechart" element={<CategoriesPieChart />} />
+              <Route path="/piechart" element={<CategoriesPieChart expenses={expenses} />} />
             </>
           ) : (
             <>
