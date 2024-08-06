@@ -12,42 +12,73 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import {
-  // ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+
+
 const chartData = [
-  { browser: "", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 90, fill: "var(--color-other)" },
+  { category: "Housing", amountSpent: 275, fill: "var(--color-housing)" },
+  { category: "Transportation", amountSpent: 200, fill: "var(--color-transportation)" },
+  { category: "Food/Groceries", amountSpent: 187, fill: "var(--color-foodGroceries)" },
+  { category: "Utilities", amountSpent: 173, fill: "var(--color-utilities)" },
+  { category: "Clothing", amountSpent: 173, fill: "var(--color-clothing)" },
+  { category: "Medical", amountSpent: 173, fill: "var(--color-medical)" },
+  { category: "Insurance", amountSpent: 173, fill: "var(--color-insurance)" },
+  { category: "Personal", amountSpent: 173, fill: "var(--color-personal)" },
+  { category: "Education", amountSpent: 173, fill: "var(--color-education)" },
+  { category: "Entertainment", amountSpent: 173, fill: "var(--color-entertainment)" },
+  { category: "other", amountSpent: 90, fill: "var(--color-other)" },
 ]
 
 const chartConfig = {
   visitors: {
     label: "Visitors",
   },
-  chrome: {
-    label: "Chrome",
+  housing: {
+    label: "Housing",
     color: "hsl(var(--chart-1))",
   },
-  safari: {
-    label: "Safari",
+  transportation: {
+    label: "Transportation",
     color: "hsl(var(--chart-2))",
   },
-  firefox: {
-    label: "Firefox",
+  foodGroceries: {
+    label: "Food/Groceries",
     color: "hsl(var(--chart-3))",
   },
-  edge: {
-    label: "Edge",
+  utilities: {
+    label: "Utilities",
     color: "hsl(var(--chart-4))",
+  },
+  clothing: {
+    label: "Clothing",
+    color: "hsl(var(--chart-5))",
+  },
+  medical: {
+    label: "Medical",
+    color: "hsl(var(--chart-6))",
+  },
+  insurance: {
+    label: "Insurance",
+    color: "hsl(var(--chart-7))",
+  },
+  personal: {
+    label: "Personal",
+    color: "hsl(var(--chart-8))",
+  },
+  education: {
+    label: "Education",
+    color: "hsl(var(--chart-9))",
+  },
+  entertainment: {
+    label: "Entertainment",
+    color: "hsl(var(--chart-10))",
   },
   other: {
     label: "Other",
-    color: "hsl(var(--chart-5))",
+    color: "hsl(var(--chart-11))",
   },
 }
 
@@ -70,8 +101,8 @@ const CategoriesPieChart = () => {
             />
             <Pie
               data={chartData}
-              dataKey="visitors"
-              nameKey="browser"
+              dataKey="amountSpent"
+              nameKey="category"
               innerRadius={0}
             />
           </PieChart>
