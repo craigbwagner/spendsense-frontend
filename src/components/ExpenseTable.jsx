@@ -208,7 +208,9 @@ const ExpenseTable = (props) => {
                 .map((expense) => {
                   return (
                     <TableRow key={expense.id}>
-                      <TableCell>{expense.name}</TableCell>
+                      <TableCell className="font-semibold">
+                        {expense.name}
+                      </TableCell>
                       <TableCell>${expense.amount}</TableCell>
                       <TableCell>{formatDate(expense.date)}</TableCell>
                       <TableCell>
