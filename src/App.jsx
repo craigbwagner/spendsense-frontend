@@ -12,6 +12,7 @@ import ExpenseForm from "./components/ExpenseForm";
 import UnexpectedIncomeForm from "./components/UnexpectedIncomeForm";
 import UpdateSettingsForm from "./components/UpdateSettingsForm";
 import CategoryBudgetsForm from "./components/UpdateBudgetsForm";
+import CategoriesPieChart from "./components/CategoriesPieChart/CategoriesPieChart";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
@@ -80,6 +81,7 @@ const App = () => {
               <Route path="*" element={<Navigate to="/" />} />
               <Route path="/settings" element={<UpdateSettingsForm settings={settings} setSettings={setSettings} />} />
               <Route path="/budget" element={<CategoryBudgetsForm categoryBudgets={categoryBudgets} setCategoryBudgets={setCategoryBudgets} />} />
+              <Route path="/piechart" element={<CategoriesPieChart />} />
             </>
           ) : (
             <>
