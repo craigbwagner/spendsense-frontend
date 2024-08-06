@@ -9,8 +9,6 @@ import * as settingsService from "./services/settingsService";
 import * as categoryBudgetsService from "./services/categoryBudgetsService";
 import Navbar from "./components/Navbar";
 import UnexpectedIncomeForm from "./components/UnexpectedIncomeForm";
-import UpdateSettingsForm from "./components/UpdateSettingsForm";
-import CategoryBudgetsForm from "./components/UpdateBudgetsForm";
 import Dashboard from "./components/Dashboard";
 import Spending from "./components/Spending";
 import Landing from "./components/Landing";
@@ -122,25 +120,7 @@ const App = () => {
               <Route
                 path="/spending"
                 element={
-                  <Spending expenses={expenses} settings={settings} categoryBudgets={categoryBudgets}/>
-                }
-              />
-              <Route
-                path="/settings"
-                element={
-                  <UpdateSettingsForm
-                    settings={settings}
-                    setSettings={setSettings}
-                  />
-                }
-              />
-              <Route
-                path="/budgets"
-                element={
-                  <CategoryBudgetsForm
-                    categoryBudgets={categoryBudgets}
-                    setCategoryBudgets={setCategoryBudgets}
-                  />
+                  <Spending expenses={expenses} settings={settings} setSettings={setSettings} categoryBudgets={categoryBudgets} setCategoryBudgets={setCategoryBudgets}/>
                 }
               />
               <Route
