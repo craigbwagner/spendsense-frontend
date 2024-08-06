@@ -12,6 +12,7 @@ import UnexpectedIncomeForm from "./components/UnexpectedIncomeForm";
 import UpdateSettingsForm from "./components/UpdateSettingsForm";
 import CategoryBudgetsForm from "./components/UpdateBudgetsForm";
 import Dashboard from "./components/Dashboard";
+import Spending from "./components/Spending";
 import Landing from "./components/Landing";
 import { toast } from "sonner";
 export const AuthedUserContext = createContext(null);
@@ -118,7 +119,12 @@ const App = () => {
                   />
                 }
               />
-
+              <Route
+                path="/spending"
+                element={
+                  <Spending expenses={expenses} settings={settings} categoryBudgets={categoryBudgets}/>
+                }
+              />
               <Route
                 path="/settings"
                 element={
