@@ -101,7 +101,10 @@ export function ExpenseLineChart(props) {
         <CardDescription>{`${moment.utc(thisMonth).format("MMMM")} - ${moment.utc(sixMonthsAgo).format("MMMM")}, ${moment.utc().year()} `}</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer className="max-h-[300px] min-h-96" config={chartConfig}>
+        <ChartContainer
+          className="max-h-[400px] max-w-full"
+          config={chartConfig}
+        >
           <LineChart
             accessibilityLayer
             data={chartData}
@@ -125,6 +128,7 @@ export function ExpenseLineChart(props) {
               stroke="var(--color-income)"
               strokeWidth={2}
               dot={true}
+              activeDot={{ r: 8 }}
             />
             <Line
               dataKey="expenses"
@@ -132,6 +136,7 @@ export function ExpenseLineChart(props) {
               stroke="var(--color-expenses)"
               strokeWidth={2}
               dot={true}
+              activeDot={{ r: 8 }}
             />
           </LineChart>
         </ChartContainer>
