@@ -131,6 +131,7 @@ const App = () => {
                     handleDeleteExpense={handleDeleteExpense}
                     handleUpdateExpense={handleUpdateExpense}
                     handleCreateExpense={handleCreateExpense}
+                    settings={settings}
                   />
                 }
               />
