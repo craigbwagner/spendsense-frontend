@@ -165,7 +165,7 @@ const CategoriesPieChart = ({ expenses }) => {
     },
   };
   return (
-    <Card className="flex min-w-[300px] flex-col shadow-md">
+    <Card className="flex min-w-[300px] flex-col shadow-md lg:min-w-[350px]">
       <CardHeader className="items-center pb-0">
         <CardTitle>{monthName} Expenses</CardTitle>
         <CardDescription>
