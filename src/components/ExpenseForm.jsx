@@ -16,8 +16,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { toast } from "sonner";
+import { Toaster } from "sonner";
+
+import moment from "moment";
 
 const formSchema = z.object({
   name: z.string().min(5).max(40),
@@ -39,28 +44,59 @@ const formSchema = z.object({
 });
 
 const ExpenseForm = (props) => {
+  let date = props.expense?.date;
+  let formattedDate = date ? moment.utc(date).format("YYYY-MM-DD") : null;
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      amount: "",
-      date: "",
+      name: props.expense?.name || "",
+      amount: props.expense?.amount || "",
+      date: formattedDate || "",
+    },
+    values: {
+      category: props.expense?.category || null,
     },
   });
 
   const handleSubmit = async (data) => {
-    props.handleCreateExpense(data);
-    form.reset();
+    try {
+      if (props.handleCreateExpense) {
+        await props.handleCreateExpense(data);
+        toast.success(`${data.name} created successfully`, {
+          cancel: {
+            label: "Dismiss",
+            onClick: () => {
+              toast.dismiss();
+            },
+          },
+        });
+      } else {
+        props.handleUpdateExpense(props.expense.id, data);
+        props.setOpen(false);
+        toast.success(`${data.name} updated successfully `, {
+          cancel: {
+            label: "Dismiss",
+            onClick: () => {
+              toast.dismiss();
+            },
+          },
+        });
+      }
+      form.reset();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
-    <main className="flex flex-col items-center justify-center w-full h-full m-8">
+    <main>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => {
             handleSubmit(data);
           })}
-          className="flex flex-col w-full max-w-md gap-4"
+          className="flex w-full max-w-md flex-col gap-4"
         >
           <FormField
             control={form.control}
@@ -107,7 +143,6 @@ const ExpenseForm = (props) => {
               );
             }}
           />
-
           <FormField
             control={form.control}
             name="category"
@@ -115,7 +150,7 @@ const ExpenseForm = (props) => {
               return (
                 <FormItem>
                   <FormLabel>Category</FormLabel>
-                  <Select onValueChange={field.onChange}>
+                  <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="category" />
@@ -144,10 +179,10 @@ const ExpenseForm = (props) => {
               );
             }}
           />
-
           <Button type="submit">Submit</Button>
         </form>
       </Form>
+      <Toaster />
     </main>
   );
 };

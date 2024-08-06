@@ -13,11 +13,22 @@ const Navbar = (props) => {
       <div className="flex gap-4">
         {user ? (
           <>
-            <NavLink to="/budget" className={({ isActive }) =>
-              isActive ? "text-sky-800" : "" } >Budget</NavLink>
-            <NavLink to="/spending" className={({ isActive }) =>
-              isActive ? "text-sky-800" : "" } >Spending</NavLink>
-            <button onClick={props.handleSignout} className="bg-none text-white">
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) => (isActive ? "text-sky-800" : "")}
+            >
+              Budget
+            </NavLink>
+            <NavLink
+              to="/spending"
+              className={({ isActive }) => (isActive ? "text-sky-800" : "")}
+            >
+              Spending
+            </NavLink>
+            <button
+              onClick={props.handleSignout}
+              className="bg-none text-white"
+            >
               Sign out
             </button>
           </>
