@@ -138,7 +138,7 @@ const ExpenseTable = (props) => {
   };
 
   return (
-    <main className="m-24 w-[800px]">
+    <main className="w-[800px]">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="w-full">
           <TabsTrigger className="w-full" value="Week">
@@ -156,7 +156,7 @@ const ExpenseTable = (props) => {
         <TabsContent value="Month"></TabsContent>
         <TabsContent value="Year"></TabsContent>
       </Tabs>
-      <Card className="scrollbar-thin max-h-[500px] w-[800px] overflow-auto shadow-md">
+      <Card className="max-h-[500px] w-[800px] overflow-auto shadow-md scrollbar-thin">
         <CardHeader className="flex flex-row items-start justify-between pb-8">
           <div>
             <CardTitle>This {activeTab}'s expenses</CardTitle>
@@ -231,7 +231,7 @@ const ExpenseTable = (props) => {
                               onSelect={(e) => e.preventDefault()}
                             >
                               <Dialog open={open} onOpenChange={setOpen}>
-                                <DialogTrigger className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-gray-100 focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                <DialogTrigger className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-gray-100 focus:bg-accent focus:text-accent-foreground">
                                   Edit
                                 </DialogTrigger>
                                 <DialogContent>
@@ -255,7 +255,7 @@ const ExpenseTable = (props) => {
                               onSelect={(e) => e.preventDefault()}
                             >
                               <AlertDialog>
-                                <AlertDialogTrigger className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm text-red-500 outline-none transition-colors hover:bg-gray-100 focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                <AlertDialogTrigger className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm text-red-500 outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-gray-100 focus:bg-accent focus:text-accent-foreground">
                                   Delete
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>

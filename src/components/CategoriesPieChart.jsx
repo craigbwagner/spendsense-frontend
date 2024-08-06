@@ -6,7 +6,6 @@ import moment from "moment";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -165,7 +164,7 @@ const CategoriesPieChart = ({ expenses }) => {
     },
   };
   return (
-    <Card className="flex max-w-[400px] flex-col">
+    <Card className="flex max-h-[400px] max-w-[400px] flex-col shadow-md">
       <CardHeader className="items-center pb-0">
         <CardTitle>{monthName} Expenses</CardTitle>
       </CardHeader>
