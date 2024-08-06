@@ -11,7 +11,7 @@ const Dashboard = (props) => {
     <main className="grid grid-cols-1 gap-16 bg-slate-50 px-24 py-12 lg:grid-cols-2">
       <div className="grid gap-8">
         <ExpenseTable {...props} />
-        <div className="flex justify-between gap-8 overflow-auto">
+        <div className="flex justify-between gap-8 overflow-auto lg:overflow-hidden">
           <Card className="max-h-fit w-fit max-w-[800px] shadow-md xl:min-w-[400px]">
             <CardHeader>
               <CardTitle>Add Expense</CardTitle>
