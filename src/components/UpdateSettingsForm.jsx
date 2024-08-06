@@ -101,7 +101,7 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
             }}
           />
 
-          <Button type="submit" className="bg-sky-500">Save Settings</Button>
+          <Button type="submit">Save Settings</Button>
         </form>
       </Form>
 
