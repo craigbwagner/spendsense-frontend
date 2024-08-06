@@ -1,13 +1,7 @@
 import ExpenseTable from "./ExpenseTable";
 import ExpenseForm from "./ExpenseForm";
 import { ExpenseLineChart } from "./LineChart";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardTitle,
-  CardDescription,
-} from "./ui/card";
+import { Card, CardHeader, CardContent, CardTitle } from "./ui/card";
 import CategoriesPieChart from "./CategoriesPieChart";
 
 const Dashboard = (props) => {
@@ -23,7 +17,7 @@ const Dashboard = (props) => {
         </CardContent>
       </Card>
       <CategoriesPieChart expenses={props.expenses} />
-      <ExpenseLineChart expenses={props.expenses} />
+      <ExpenseLineChart expenses={props.expenses} settings={props.settings} />
     </div>
   );
 };
