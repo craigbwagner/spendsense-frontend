@@ -18,18 +18,35 @@ import {
 } from "@/components/ui/chart"
 
 
+const CategoriesPieChart = ({ expenses }) => {
+  const categorySpending = {};
+  const categories = ["housing", "transportation", "food_groceries", "utilities", "clothing", "medical", "insurance", "personal", "education", "entertainment", "other"];
+
+  categories.forEach((category) => {
+    const categoryExpenses = expenses.filter((expense) => {
+      return expense.category === category});
+
+    if (!categoryExpenses.length) {
+      return;
+    } else {
+      categorySpending[category] = categoryExpenses.reduce((total, expense) => {
+        return total + Number(expense.amount);
+      }, 0);
+    }
+  });
+
 const chartData = [
-  { category: "Housing", amountSpent: 275, fill: "var(--color-housing)" },
-  { category: "Transportation", amountSpent: 200, fill: "var(--color-transportation)" },
-  { category: "Food/Groceries", amountSpent: 187, fill: "var(--color-foodGroceries)" },
-  { category: "Utilities", amountSpent: 173, fill: "var(--color-utilities)" },
-  { category: "Clothing", amountSpent: 173, fill: "var(--color-clothing)" },
-  { category: "Medical", amountSpent: 173, fill: "var(--color-medical)" },
-  { category: "Insurance", amountSpent: 173, fill: "var(--color-insurance)" },
-  { category: "Personal", amountSpent: 173, fill: "var(--color-personal)" },
-  { category: "Education", amountSpent: 173, fill: "var(--color-education)" },
-  { category: "Entertainment", amountSpent: 173, fill: "var(--color-entertainment)" },
-  { category: "other", amountSpent: 90, fill: "var(--color-other)" },
+  { category: "Housing", amountSpent: categorySpending.housing, fill: "var(--color-housing)" },
+  { category: "Transportation", amountSpent: categorySpending.transportation, fill: "var(--color-transportation)" },
+  { category: "Food/Groceries", amountSpent: categorySpending.food_groceries, fill: "var(--color-foodGroceries)" },
+  { category: "Utilities", amountSpent: categorySpending.utilities, fill: "var(--color-utilities)" },
+  { category: "Clothing", amountSpent: categorySpending.clothing, fill: "var(--color-clothing)" },
+  { category: "Medical", amountSpent: categorySpending.medical, fill: "var(--color-medical)" },
+  { category: "Insurance", amountSpent: categorySpending.insurance, fill: "var(--color-insurance)" },
+  { category: "Personal", amountSpent: categorySpending.personal, fill: "var(--color-personal)" },
+  { category: "Education", amountSpent: categorySpending.education, fill: "var(--color-education)" },
+  { category: "Entertainment", amountSpent: categorySpending.entertainment, fill: "var(--color-entertainment)" },
+  { category: "other", amountSpent: categorySpending.housing, fill: "var(--color-other)" },
 ]
 
 const chartConfig = {
@@ -81,8 +98,6 @@ const chartConfig = {
     color: "hsl(var(--chart-11))",
   },
 }
-
-const CategoriesPieChart = () => {
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
@@ -109,9 +124,6 @@ const CategoriesPieChart = () => {
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
         <div className="leading-none text-muted-foreground">
           Showing total visitors for the last 6 months
         </div>
