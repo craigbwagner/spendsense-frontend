@@ -17,7 +17,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-const thisMonth = moment().startOf("month");
+const thisMonth = moment().endOf("month");
 const sixMonthsAgo = thisMonth.clone().subtract(6, "months");
 
 const reverseMonthNames = Array.from({ length: 6 }, (_, i) => {
@@ -56,14 +56,34 @@ export function ExpenseLineChart(props) {
     );
   });
 
+  const monthlyIncome = props.settings.monthly_income;
+  console.log(monthlyIncome);
+
   console.log(recentIncome);
+
+  let thisMonthExpenses = 0;
+  let lastMonthExpenses = 0;
+
+  recentExpenses.forEach((expense) => {
+    if (moment.utc(expense.date).format("MMMM") === thisMonth.format("MMMM")) {
+      thisMonthExpenses += Number(expense.amount);
+    } else if (
+      moment.utc(expense.date).format("MMMM") ===
+      thisMonth.clone().subtract(1, "months").format("MMMM")
+    ) {
+      lastMonthExpenses += Number(expense.amount);
+    }
+  });
 
   const chartData = monthNames.map((month) => {
     return {
       month,
       income: recentIncome
         .filter((expense) => moment.utc(expense.date).format("MMMM") === month)
-        .reduce((total, expense) => total + Number(expense.amount), 0),
+        .reduce(
+          (total, expense) => total + Number(expense.amount),
+          monthlyIncome,
+        ),
 
       expenses: recentExpenses
         .filter((expense) => moment.utc(expense.date).format("MMMM") === month)
@@ -71,14 +91,20 @@ export function ExpenseLineChart(props) {
     };
   });
 
+  const percentageIncrease =
+    ((thisMonthExpenses - lastMonthExpenses) / lastMonthExpenses) * 100;
+
   return (
     <Card className="min-w-[400px] max-w-[800px] shadow-md">
       <CardHeader>
         <CardTitle>Income and expenses</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardDescription>{`${moment.utc(thisMonth).format("MMMM")} - ${moment.utc(sixMonthsAgo).format("MMMM")}, ${moment.utc().year()} `}</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer className="max-h-[300px] min-h-96" config={chartConfig}>
+        <ChartContainer
+          className="max-h-[400px] max-w-full"
+          config={chartConfig}
+        >
           <LineChart
             accessibilityLayer
             data={chartData}
@@ -102,6 +128,7 @@ export function ExpenseLineChart(props) {
               stroke="var(--color-income)"
               strokeWidth={2}
               dot={true}
+              activeDot={{ r: 8 }}
             />
             <Line
               dataKey="expenses"
@@ -109,6 +136,7 @@ export function ExpenseLineChart(props) {
               stroke="var(--color-expenses)"
               strokeWidth={2}
               dot={true}
+              activeDot={{ r: 8 }}
             />
           </LineChart>
         </ChartContainer>
@@ -117,7 +145,9 @@ export function ExpenseLineChart(props) {
         <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
             <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+              Expenses are trending {percentageIncrease > 0 ? "up" : "down"} by{" "}
+              {String(percentageIncrease).split(".")[0].replace("-", "")}% this
+              month <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
               Showing total income and expenses for the past 6 months

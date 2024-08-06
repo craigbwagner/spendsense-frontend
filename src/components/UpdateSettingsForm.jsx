@@ -12,12 +12,12 @@ import {
 } from "./ui/form";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import * as settingsService from "../services/settingsService"
+import * as settingsService from "../services/settingsService";
 
 const formSchema = z.object({
   monthly_income: z.coerce.number().nonnegative(),
   monthly_budget: z.coerce.number().nonnegative(),
-  savings_goal: z.coerce.number().nonnegative()
+  savings_goal: z.coerce.number().nonnegative(),
 });
 
 const UpdateSettingsForm = ({ settings, setSettings }) => {
@@ -28,12 +28,12 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
     defaultValues: {
       monthly_income: 0,
       monthly_budget: 0,
-      savings_goal: 0
+      savings_goal: 0,
     },
     values: {
       monthly_income: settings.monthly_income,
       monthly_budget: settings.monthly_budget,
-      savings_goal: settings.savings_goal
+      savings_goal: settings.savings_goal,
     },
   });
 
@@ -45,15 +45,15 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
   return (
-    <section className="flex flex-col items-center justify-center w-full h-full m-8">
+    <section className="m-8 flex h-full w-full flex-col items-center justify-center">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => {
             handleSubmit(data);
           })}
-          className="flex flex-col w-full max-w-md gap-4"
+          className="flex w-full max-w-md flex-col gap-4"
         >
           <FormField
             control={form.control}
@@ -63,7 +63,11 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
                 <FormItem>
                   <FormLabel>Monthly Income</FormLabel>
                   <FormControl>
-                    <Input placeholder="Monthly Income" type="number" {...field} />
+                    <Input
+                      placeholder="Monthly Income"
+                      type="number"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -78,7 +82,11 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
                 <FormItem>
                   <FormLabel>Monthly Budget</FormLabel>
                   <FormControl>
-                    <Input placeholder="Monthly Budget" type="number" {...field} />
+                    <Input
+                      placeholder="Monthly Budget"
+                      type="number"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -93,7 +101,11 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
                 <FormItem>
                   <FormLabel>Monthly Savings Goal</FormLabel>
                   <FormControl>
-                    <Input placeholder="Montly savings Goal" type="number" {...field} />
+                    <Input
+                      placeholder="Montly savings Goal"
+                      type="number"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -104,9 +116,8 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
           <Button type="submit">Save Settings</Button>
         </form>
       </Form>
-
     </section>
-  )
-}
+  );
+};
 
 export default UpdateSettingsForm;
