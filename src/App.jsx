@@ -13,7 +13,6 @@ import UpdateSettingsForm from "./components/UpdateSettingsForm";
 import CategoryBudgetsForm from "./components/UpdateBudgetsForm";
 import Dashboard from "./components/Dashboard";
 import { toast } from "sonner";
-import CategoriesPieChart from "./components/CategoriesPieChart";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
@@ -148,7 +147,6 @@ const App = () => {
                   />
                 }
               />
-              <Route path="/piechart" element={<CategoriesPieChart expenses={expenses} />} />
             </>
           ) : (
             <>

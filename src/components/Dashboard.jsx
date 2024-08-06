@@ -7,6 +7,7 @@ import {
   CardTitle,
   CardDescription,
 } from "./ui/card";
+import CategoriesPieChart from "./CategoriesPieChart";
 
 const Dashboard = (props) => {
   return (
@@ -22,6 +23,7 @@ const Dashboard = (props) => {
         <CardContent>
           <ExpenseForm handleCreateExpense={props.handleCreateExpense} />
         </CardContent>
+        <CategoriesPieChart expenses={props.expenses} />
       </Card>
     </div>
   );
