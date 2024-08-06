@@ -287,21 +287,26 @@ function getPayloadConfigFromPayload(config, payload, key) {
     typeof payload.payload === "object" &&
     payload.payload !== null
       ? payload.payload
-      : undefined;
+      : undefined
 
-  let configLabelKey = key;
+  let configLabelKey = key
 
-  if (key in payload && typeof payload[key] === "string") {
-    configLabelKey = payload[key];
+  if (
+    key in payload &&
+    typeof payload[key] === "string"
+  ) {
+    configLabelKey = payload[key]
   } else if (
     payloadPayload &&
     key in payloadPayload &&
     typeof payloadPayload[key] === "string"
   ) {
-    configLabelKey = payloadPayload[key];
+    configLabelKey = payloadPayload[key]
   }
 
-  return configLabelKey in config ? config[configLabelKey] : config[key];
+  return configLabelKey in config
+    ? config[configLabelKey]
+    : config[key];
 }
 
 export {
@@ -311,4 +316,5 @@ export {
   ChartLegend,
   ChartLegendContent,
   ChartStyle,
+
 };
