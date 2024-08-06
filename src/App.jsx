@@ -12,7 +12,7 @@ import ExpenseForm from "./components/ExpenseForm";
 import UnexpectedIncomeForm from "./components/UnexpectedIncomeForm";
 import UpdateSettingsForm from "./components/UpdateSettingsForm";
 import CategoryBudgetsForm from "./components/UpdateBudgetsForm";
-import CategoriesPieChart from "./components/CategoriesPieChart/CategoriesPieChart";
+import CategoriesPieChart from "./components/CategoriesPieChart";
 export const AuthedUserContext = createContext(null);
 
 const App = () => {

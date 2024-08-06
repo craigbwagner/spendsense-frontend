@@ -12,13 +12,13 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import {
-  ChartConfig,
+  // ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
 const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
+  { browser: "", visitors: 275, fill: "var(--color-chrome)" },
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
   { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
   { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
@@ -72,7 +72,7 @@ const CategoriesPieChart = () => {
               data={chartData}
               dataKey="visitors"
               nameKey="browser"
-              innerRadius={60}
+              innerRadius={0}
             />
           </PieChart>
         </ChartContainer>
