@@ -2,6 +2,7 @@
 
 import { TrendingUp } from "lucide-react"
 import { Pie, PieChart } from "recharts"
+import moment from "moment";
 
 import {
   Card,
@@ -17,13 +18,26 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
+const thisMonth = moment().startOf("month");
+const monthName = moment().format("MMMM");
 
 const CategoriesPieChart = ({ expenses }) => {
   const categorySpending = {};
   const categories = ["housing", "transportation", "food_groceries", "utilities", "clothing", "medical", "insurance", "personal", "education", "entertainment", "other"];
 
+  const thisMonthExpenses = expenses.filter((expense) => {
+    const expenseDate = moment.utc(expense.date);
+    return (
+      expenseDate.isSameOrAfter(thisMonth) &&
+      expense.category !== "income"
+    );
+  });
+
+  console.log("Expenses: ", expenses);
+  console.log("Month expenses: ", thisMonthExpenses);
+
   categories.forEach((category) => {
-    const categoryExpenses = expenses.filter((expense) => {
+    const categoryExpenses = thisMonthExpenses.filter((expense) => {
       return expense.category === category});
 
     if (!categoryExpenses.length) {
@@ -101,8 +115,7 @@ const chartConfig = {
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart - Donut</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>{monthName} Expenses</CardTitle>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -125,7 +138,7 @@ const chartConfig = {
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+          Showing expenses by category for {monthName}
         </div>
       </CardFooter>
     </Card>
