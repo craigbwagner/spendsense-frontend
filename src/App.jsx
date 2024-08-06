@@ -13,6 +13,7 @@ import UpdateSettingsForm from "./components/UpdateSettingsForm";
 import CategoryBudgetsForm from "./components/UpdateBudgetsForm";
 import Dashboard from "./components/Dashboard";
 import Spending from "./components/Spending";
+import Landing from "./components/Landing";
 import { toast } from "sonner";
 export const AuthedUserContext = createContext(null);
 
@@ -109,7 +110,7 @@ const App = () => {
         <Routes>
           {user ? (
             <>
-              <Route path="/" element={<h1>Home</h1>} />
+              <Route path="/" element={<Landing />} />
               <Route
                 path="/income"
                 element={

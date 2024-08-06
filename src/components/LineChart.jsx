@@ -26,8 +26,6 @@ const reverseMonthNames = Array.from({ length: 6 }, (_, i) => {
 
 const monthNames = reverseMonthNames.reverse();
 
-console.log(monthNames);
-
 const chartConfig = {
   income: {
     label: "Income",
@@ -49,10 +47,24 @@ export function ExpenseLineChart(props) {
     );
   });
 
+  const recentIncome = props.expenses.filter((expense) => {
+    const expenseDate = moment.utc(expense.date);
+    return (
+      expenseDate.isAfter(sixMonthsAgo) &&
+      expenseDate.isBefore(thisMonth) &&
+      expense.category === "income"
+    );
+  });
+
+  console.log(recentIncome);
+
   const chartData = monthNames.map((month) => {
     return {
       month,
-      income: Math.floor(Math.random() * 1000),
+      income: recentIncome
+        .filter((expense) => moment.utc(expense.date).format("MMMM") === month)
+        .reduce((total, expense) => total + Number(expense.amount), 0),
+
       expenses: recentExpenses
         .filter((expense) => moment.utc(expense.date).format("MMMM") === month)
         .reduce((total, expense) => total + Number(expense.amount), 0),
