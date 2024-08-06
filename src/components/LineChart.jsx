@@ -98,7 +98,7 @@ export function ExpenseLineChart(props) {
     <Card className="min-w-[400px] shadow-md">
       <CardHeader>
         <CardTitle>Income and expenses</CardTitle>
-        <CardDescription>{`${moment.utc(thisMonth).format("MMMM")} - ${moment.utc(sixMonthsAgo).format("MMMM")}, ${moment.utc().year()} `}</CardDescription>
+        <CardDescription>{`${moment.utc(sixMonthsAgo).format("MMMM")} - ${moment.utc(thisMonth).subtract(1, "month").format("MMMM")}, ${moment.utc().year()} `}</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer className="max-h-[450px] w-full" config={chartConfig}>
