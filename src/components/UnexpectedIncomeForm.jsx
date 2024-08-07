@@ -36,7 +36,7 @@ const UnexpectedIncomeForm = (props) => {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center w-full h-full m-8">
+    <section>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => {
@@ -93,7 +93,7 @@ const UnexpectedIncomeForm = (props) => {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
-    </main>
+    </section>
   );
 };
 
