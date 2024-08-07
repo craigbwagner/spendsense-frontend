@@ -33,7 +33,7 @@ const SettingsCard = (props) => {
                     <DialogTitle>Update User Settings</DialogTitle>
                   </DialogHeader>
                   <DialogDescription />
-                  <UpdateSettingsForm settings={props.settings} setSettings={props.setSettings} />
+                  <UpdateSettingsForm settings={props.settings} setSettings={props.setSettings} setSettingsOpen={props.setSettingsOpen} />
                 </DialogContent>
               </Dialog>
               <h3 className="text-xl mb-3">Budgets by Category</h3>

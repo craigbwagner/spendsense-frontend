@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -13,6 +12,7 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import * as settingsService from "../services/settingsService";
+import { toast, Toaster } from "sonner";
 
 const formSchema = z.object({
   monthly_income: z.coerce.number().nonnegative(),
@@ -20,8 +20,7 @@ const formSchema = z.object({
   savings_goal: z.coerce.number().nonnegative(),
 });
 
-const UpdateSettingsForm = ({ settings, setSettings }) => {
-  const navigate = useNavigate();
+const UpdateSettingsForm = ({ settings, setSettings, setSettingsOpen }) => {
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -41,7 +40,15 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
     try {
       const updatedSettings = await settingsService.update(data);
       setSettings(updatedSettings);
-      navigate("/");
+      setSettingsOpen(false);
+      toast.success("Settings updated successfully", {
+        cancel: {
+          label: "Dismiss",
+          onClick: () => {
+            toast.dismiss();
+          },
+        },
+      });
     } catch (err) {
       console.log(err);
     }
@@ -116,6 +123,7 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
           <Button type="submit">Save Settings</Button>
         </form>
       </Form>
+      <Toaster />
     </section>
   );
 };
