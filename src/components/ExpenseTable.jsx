@@ -156,11 +156,13 @@ const ExpenseTable = (props) => {
         <TabsContent value="Month"></TabsContent>
         <TabsContent value="Year"></TabsContent>
       </Tabs>
-      <Card className="max-h-[500px] min-w-[300px] overflow-auto shadow-md scrollbar-thin">
+      <Card className="scrollbar-thin max-h-[500px] min-w-[300px] overflow-auto shadow-md">
         <CardHeader className="flex flex-row items-start justify-between pb-8">
           <div>
-            <CardTitle>This {activeTab}'s expenses</CardTitle>
-            <CardDescription>All expenses for this week </CardDescription>
+            <CardTitle>This {activeTab}'s transactions</CardTitle>
+            <CardDescription>
+              All transactions for this {activeTab}{" "}
+            </CardDescription>
           </div>
           <div className="m-0 flex items-center gap-4 p-0">
             <Label htmlFor="category-select">Category:</Label>
@@ -177,7 +179,7 @@ const ExpenseTable = (props) => {
                 <SelectItem value="food_groceries">Food</SelectItem>
                 <SelectItem value="transportation">Transportation</SelectItem>
                 <SelectItem value="housing">Housing</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
+
                 <SelectItem value="entertainment">Entertainment</SelectItem>
                 <SelectItem value="clothing">Clothing</SelectItem>
                 <SelectItem value="utilities">Utilities</SelectItem>
@@ -185,6 +187,8 @@ const ExpenseTable = (props) => {
                 <SelectItem value="insurance">Insurance</SelectItem>
                 <SelectItem value="personal">Personal</SelectItem>
                 <SelectItem value="education">Education</SelectItem>
+                <SelectItem value="income">Income</SelectItem>
+                <SelectItem value="other">Other</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -211,7 +215,18 @@ const ExpenseTable = (props) => {
                       <TableCell className="font-semibold">
                         {expense.name}
                       </TableCell>
-                      <TableCell>${expense.amount}</TableCell>
+                      <TableCell
+                        className={
+                          expense.category === "income"
+                            ? "text-green-500"
+                            : "text-red-500"
+                        }
+                      >
+                        $ {""}
+                        {expense.category === "income"
+                          ? `+${String(expense.amount).split("-")[1]}`
+                          : `-${expense.amount}`}
+                      </TableCell>
                       <TableCell>{formatDate(expense.date)}</TableCell>
                       <TableCell>
                         {expense.category == "food_groceries"
@@ -233,7 +248,7 @@ const ExpenseTable = (props) => {
                               onSelect={(e) => e.preventDefault()}
                             >
                               <Dialog open={open} onOpenChange={setOpen}>
-                                <DialogTrigger className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-gray-100 focus:bg-accent focus:text-accent-foreground">
+                                <DialogTrigger className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-gray-100 focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                                   Edit
                                 </DialogTrigger>
                                 <DialogContent>
@@ -257,7 +272,7 @@ const ExpenseTable = (props) => {
                               onSelect={(e) => e.preventDefault()}
                             >
                               <AlertDialog>
-                                <AlertDialogTrigger className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm text-red-500 outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-gray-100 focus:bg-accent focus:text-accent-foreground">
+                                <AlertDialogTrigger className="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm text-red-500 outline-none transition-colors hover:bg-gray-100 focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
                                   Delete
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
