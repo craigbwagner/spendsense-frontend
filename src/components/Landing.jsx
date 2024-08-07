@@ -2,6 +2,7 @@ import { HeroParallax } from "./ui/hero-parallax";
 import { useEffect } from "react";
 import { WavyBackground } from "./ui/wavy-background";
 import { motion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
 
 const products = [
   {
@@ -101,42 +102,39 @@ const Landing = () => {
   return (
     <>
       <div className="custom-scrollbar dark bg-neutral-950">
-        <HeroParallax products={products} />
-      </div>
-      <div className="v-full dark h-screen bg-neutral-950">
+        <WavyBackground
+          waveWidth={75}
+          waveOpacity={0.5}
+          backgroundFill="#0a0a0a"
+        ></WavyBackground>
         <motion.div
-          className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-40 md:py-40"
+          className="absolute"
           initial={{
-            x: "-50vw",
-          }}
-          whileInView={{
-            x: 0,
-            transition: {
-              delay: 0.2,
-              duration: 0.8,
-            },
+            y: "-55vh",
+            x: "38vw",
           }}
         >
+          <div className="text-3xl font-semibold text-white md:text-7xl">
+            Welcome to <br />{" "}
+            <span className="text-fuchsia-600">SpendSense</span>
+          </div>
+        </motion.div>
+        <HeroParallax products={products} />
+      </div>
+      <div className="v-full dark h-screen bg-neutral-950 bg-grid-small-slate-800">
+        <div className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-40 md:pb-40 md:pt-10">
           <h1 className="text-2xl font-bold dark:text-white md:text-7xl">
-            See what they're saying <br /> about{" "}
+            See what people are saying <br /> about{" "}
             <span className="text-fuchsia-600">SpendSense</span>
           </h1>
-        </motion.div>
+        </div>
+        <div className="mx-auto w-full"></div>
       </div>
-      <WavyBackground
-        waveWidth={75}
-        waveOpacity={0.2}
-        backgroundFill="#0a0a0a"
-      ></WavyBackground>
-      <motion.div
-        className="absolute"
-        initial={{
-          y: "-52vh",
-          x: "45vw",
-        }}
-      >
-        <div className="text-7xl font-semibold text-white"> Hello</div>
-      </motion.div>
+      <footer>
+        <div className="dark flex h-8 items-center justify-end bg-neutral-950 px-4 text-sm text-fuchsia-600">
+          Created by Menachem Lemmer and Craig Wagner
+        </div>
+      </footer>
     </>
   );
 };
