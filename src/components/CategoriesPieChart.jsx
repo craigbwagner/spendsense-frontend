@@ -161,40 +161,61 @@ const CategoriesPieChart = ({ expenses }) => {
       color: "hsl(var(--chart-11))",
     },
   };
-  return (
-    <Card className="flex min-w-[300px] flex-col shadow-md lg:min-w-[350px]">
-      <CardHeader className="items-center pb-0">
-        <CardTitle>{monthName} Expenses</CardTitle>
-        <CardDescription>
-          {monthName} {moment().year()}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="flex-1 pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
-        >
-          <PieChart>
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Pie
-              data={chartData}
-              dataKey="amountSpent"
-              nameKey="category"
-              innerRadius={0}
-            />
-          </PieChart>
-        </ChartContainer>
-      </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
-        <div className="leading-none text-muted-foreground">
-          Showing expenses by category
-        </div>
-      </CardFooter>
-    </Card>
-  );
+
+  if (!thisMonthExpenses.length) {
+    return (
+      <Card className="flex min-w-[300px] flex-col shadow-md lg:min-w-[350px]">
+        <CardHeader className="text-center pb-0">
+          <CardTitle>{monthName} Expenses by Category</CardTitle>
+          <CardDescription>
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex-1 text-center place-content-center p-4">
+          <h1 className="text-xl text-gray-600">No expenses yet this month</h1>
+        </CardContent>
+        <CardFooter className="flex-col gap-2 text-sm">
+          <div className="leading-none text-muted-foreground">
+            Showing expenses by category
+          </div>
+        </CardFooter>
+      </Card>
+    )
+  } else {
+    return (
+      <Card className="flex min-w-[300px] flex-col shadow-md lg:min-w-[350px]">
+        <CardHeader className="items-center pb-0">
+          <CardTitle>{monthName} Expenses</CardTitle>
+          <CardDescription>
+            {monthName} {moment().year()}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex-1 pb-0">
+          <ChartContainer
+            config={chartConfig}
+            className="mx-auto aspect-square max-h-[250px]"
+          >
+            <PieChart>
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
+              <Pie
+                data={chartData}
+                dataKey="amountSpent"
+                nameKey="category"
+                innerRadius={0}
+              />
+            </PieChart>
+          </ChartContainer>
+        </CardContent>
+        <CardFooter className="flex-col gap-2 text-sm">
+          <div className="leading-none text-muted-foreground">
+            Showing expenses by category
+          </div>
+        </CardFooter>
+      </Card>
+    );
+  }
 };
 
 export default CategoriesPieChart;
