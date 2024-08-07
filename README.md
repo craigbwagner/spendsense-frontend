@@ -6,7 +6,9 @@ Spendsense is a modern full-stack application written in JavaScript and Python t
 
 ### Features
 
--
+- Track Spending: Users can add recent expenses/income and categorize them.
+- Create Budgets: Users can set an overall budget, but also be more granular by setting budget goals per category.
+- View Trends: Users can view how they have been allocating their money and how it has changed on a month-by-month basis.
 
 ## Screenshots
 
