@@ -126,6 +126,9 @@ const App = () => {
                     setSettings={setSettings}
                     categoryBudgets={categoryBudgets}
                     setCategoryBudgets={setCategoryBudgets}
+                    handleDeleteExpense={handleDeleteExpense}
+                    handleUpdateExpense={handleUpdateExpense}
+                    handleCreateExpense={handleCreateExpense}
                   />
                 }
               />
