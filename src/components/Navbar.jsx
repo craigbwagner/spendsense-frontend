@@ -1,13 +1,21 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthedUserContext } from "../App";
 
 const Navbar = (props) => {
   const user = useContext(AuthedUserContext);
 
+  const path = useLocation().pathname;
+
   return (
-    <nav className="flex items-center justify-between bg-gray-800 p-4 text-white">
-      <Link to="/" className="text-2xl font-bold">
+    <nav
+      className={
+        path !== "/"
+          ? `flex items-center justify-between bg-gray-800 p-4 text-white`
+          : `absolute top-0 flex h-20 w-full items-center justify-between bg-transparent p-4 text-white`
+      }
+    >
+      <Link to="/" className="z-10 text-2xl font-bold transition">
         SpendSense
       </Link>
       <div className="flex gap-4">
@@ -15,29 +23,40 @@ const Navbar = (props) => {
           <>
             <NavLink
               to="/dashboard"
-              className={({ isActive }) => (isActive ? "text-sky-800" : "")}
+              className={({ isActive }) =>
+                isActive
+                  ? "z-10 text-sky-800"
+                  : "group z-10 transition duration-300"
+              }
             >
-              Budget
+              Dashboard
+              <span className="block h-0.5 max-w-0 bg-white transition-all duration-500 group-hover:max-w-full"></span>
             </NavLink>
             <NavLink
               to="/spending"
-              className={({ isActive }) => (isActive ? "text-sky-800" : "")}
+              className={({ isActive }) =>
+                isActive
+                  ? "z-10 text-sky-800"
+                  : "group z-10 transition duration-300"
+              }
             >
               Spending
+              <span className="block h-0.5 max-w-0 bg-white transition-all duration-500 group-hover:max-w-full"></span>
             </NavLink>
             <button
               onClick={props.handleSignout}
-              className="bg-none text-white"
+              className="group z-10 bg-none text-white transition duration-300"
             >
               Sign out
+              <span className="block h-0.5 max-w-0 bg-white transition-all duration-500 group-hover:max-w-full"></span>
             </button>
           </>
         ) : (
           <>
-            <Link to="/signin" className="text-white">
+            <Link to="/signin" className="z-10 text-white">
               Log in
             </Link>
-            <Link to="/signup" className="text-white">
+            <Link to="/signup" className="z-10 text-white">
               Sign up
             </Link>
           </>

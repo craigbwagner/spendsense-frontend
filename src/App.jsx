@@ -120,7 +120,13 @@ const App = () => {
               <Route
                 path="/spending"
                 element={
-                  <Spending expenses={expenses} settings={settings} setSettings={setSettings} categoryBudgets={categoryBudgets} setCategoryBudgets={setCategoryBudgets}/>
+                  <Spending
+                    expenses={expenses}
+                    settings={settings}
+                    setSettings={setSettings}
+                    categoryBudgets={categoryBudgets}
+                    setCategoryBudgets={setCategoryBudgets}
+                  />
                 }
               />
               <Route
@@ -138,7 +144,7 @@ const App = () => {
             </>
           ) : (
             <>
-              <Route path="/" element={<h1>Home</h1>} />
+              <Route path="/" element={<Landing />} />
               <Route
                 path="/signup"
                 element={<SignupForm setUser={setUser} />}

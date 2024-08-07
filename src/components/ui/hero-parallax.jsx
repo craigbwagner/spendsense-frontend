@@ -42,10 +42,8 @@ export const HeroParallax = ({ products = [] }) => {
   return (
     <div
       ref={ref}
-      className="bg-grid-small-black/[0.2] relative flex h-[300vh] flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
+      className="relative flex h-[300vh] flex-col self-auto overflow-hidden py-40 antialiased bg-grid-small-slate-900 [perspective:1000px] [transform-style:preserve-3d] dark:bg-grid-small-slate-700"
     >
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
-
       <Header />
       <motion.div
         style={{
@@ -90,7 +88,7 @@ export const HeroParallax = ({ products = [] }) => {
 
 export const Header = () => {
   return (
-    <div className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-20 md:py-40">
+    <div className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-40 md:py-40">
       <h1 className="text-2xl font-bold dark:text-white md:text-7xl">
         The Ultimate <br /> Finance Tracker
       </h1>
