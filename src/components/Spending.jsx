@@ -7,7 +7,7 @@ import {
   CardTitle,
   CardDescription,
 } from "./ui/card";
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
 import UpdateSettingsForm from "./UpdateSettingsForm";
 import UpdateBudgetsForm from "./UpdateBudgetsForm";
 import IncomeNegativeBarChart from "./IncomeNegativeBarChart";
@@ -38,6 +38,7 @@ const Dashboard = (props) => {
                 <DialogHeader>
                   <DialogTitle>Update User Settings</DialogTitle>
                 </DialogHeader>
+                <DialogDescription />
                 <UpdateSettingsForm settings={props.settings} setSettings={props.setSettings} />
               </DialogContent>
             </Dialog>
@@ -63,6 +64,7 @@ const Dashboard = (props) => {
                 <DialogHeader>
                   <DialogTitle>Update Category Budgets</DialogTitle>
                 </DialogHeader>
+                <DialogDescription />
                 <UpdateBudgetsForm categoryBudgets={props.categoryBudgets} setCategoryBudgets={props.setCategoryBudgets} />
               </DialogContent>
             </Dialog>
