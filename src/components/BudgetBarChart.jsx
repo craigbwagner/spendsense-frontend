@@ -65,7 +65,7 @@ export function BudgetBarChart(props) {
     },
   ];
   return (
-    <Card className="flex flex-col justify-between shadow-md xl:min-w-[400px]">
+    <Card className="flex flex-col justify-between shadow-md xl:min-w-[300px]">
       <CardHeader>
         <CardTitle>Budget and Spending</CardTitle>
         <CardDescription>

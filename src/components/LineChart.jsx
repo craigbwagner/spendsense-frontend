@@ -57,9 +57,6 @@ export function ExpenseLineChart(props) {
   });
 
   const monthlyIncome = props.settings.monthly_income;
-  console.log(monthlyIncome);
-
-  console.log(recentIncome);
 
   let thisMonthExpenses = 0;
   let lastMonthExpenses = 0;
