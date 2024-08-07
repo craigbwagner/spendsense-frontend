@@ -16,7 +16,8 @@ const Navbar = (props) => {
       }
     >
       <Link to="/" className="z-10 text-3xl font-bold transition">
-        SpendSense
+        Spend
+        <span className={path === "/" ? "text-fuchsia-600" : ""}>Sense</span>
       </Link>
       <div className="flex gap-4">
         {user ? (
