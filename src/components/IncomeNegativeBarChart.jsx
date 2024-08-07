@@ -69,7 +69,6 @@ const IncomeNegativeBarChart = (props) => {
     };
   })
 
-  console.log("Monthly Income and Expenses:", monthlyIncomeAndExpenses);
   const chartData = monthlyIncomeAndExpenses.map((item) => {
     return {
       month: item.month,
@@ -77,7 +76,6 @@ const IncomeNegativeBarChart = (props) => {
     };
   });
 
-  console.log("ChartData:", chartData);
 
   return (
     <Card>
@@ -110,9 +108,6 @@ const IncomeNegativeBarChart = (props) => {
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
         <div className="leading-none text-muted-foreground">
           Showing Net Income for the last 3 months
         </div>
