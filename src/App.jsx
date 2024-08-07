@@ -118,7 +118,7 @@ const App = () => {
                 }
               />
               <Route
-                path="/spending"
+                path="/budget"
                 element={
                   <Spending
                     expenses={expenses}
