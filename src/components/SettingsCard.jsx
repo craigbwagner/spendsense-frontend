@@ -11,7 +11,7 @@ import UpdateBudgetsForm from "./UpdateBudgetsForm";
 
 const SettingsCard = (props) => {
   return (
-    <div>
+    <div className="flex place-center mx-auto">
         <Card className="w-fit min-w-[500px] max-w-[800px] shadow-md">
           <CardHeader>
             <CardTitle>Configured Settings</CardTitle>
