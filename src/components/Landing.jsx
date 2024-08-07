@@ -1,5 +1,7 @@
 import { HeroParallax } from "./ui/hero-parallax";
 import { useEffect } from "react";
+import { WavyBackground } from "./ui/wavy-background";
+import { motion } from "framer-motion";
 
 const products = [
   {
@@ -97,9 +99,45 @@ const Landing = () => {
     };
   }, []);
   return (
-    <div className="custom-scrollbar dark bg-neutral-950">
-      <HeroParallax products={products} />
-    </div>
+    <>
+      <div className="custom-scrollbar dark bg-neutral-950">
+        <HeroParallax products={products} />
+      </div>
+      <div className="v-full dark h-screen bg-neutral-950">
+        <motion.div
+          className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-40 md:py-40"
+          initial={{
+            x: "-50vw",
+          }}
+          whileInView={{
+            x: 0,
+            transition: {
+              delay: 0.2,
+              duration: 0.8,
+            },
+          }}
+        >
+          <h1 className="text-2xl font-bold dark:text-white md:text-7xl">
+            See what they're saying <br /> about{" "}
+            <span className="text-fuchsia-600">SpendSense</span>
+          </h1>
+        </motion.div>
+      </div>
+      <WavyBackground
+        waveWidth={75}
+        waveOpacity={0.2}
+        backgroundFill="#0a0a0a"
+      ></WavyBackground>
+      <motion.div
+        className="absolute"
+        initial={{
+          y: "-52vh",
+          x: "45vw",
+        }}
+      >
+        <div className="text-7xl font-semibold text-white"> Hello</div>
+      </motion.div>
+    </>
   );
 };
 

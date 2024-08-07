@@ -78,7 +78,7 @@ export function ExpenseLineChart(props) {
       income: recentIncome
         .filter((expense) => moment.utc(expense.date).format("MMMM") === month)
         .reduce(
-          (total, expense) => total + Number(expense.amount),
+          (total, expense) => total + Number(expense.amount) * -1,
           monthlyIncome,
         ),
 
