@@ -26,7 +26,7 @@ import moment from "moment";
 
 const formSchema = z.object({
   name: z.string().min(5).max(40),
-  amount: z.coerce.number().positive().min(0.01),
+  amount: z.coerce.number(),
   date: z.coerce.date(),
   category: z.enum([
     "food_groceries",
@@ -40,6 +40,7 @@ const formSchema = z.object({
     "insurance",
     "personal",
     "education",
+    "income",
   ]),
 });
 
@@ -47,11 +48,16 @@ const ExpenseForm = (props) => {
   let date = props.expense?.date;
   let formattedDate = date ? moment.utc(date).format("YYYY-MM-DD") : null;
 
+  let incomeAmount =
+    props.expense?.category === "income"
+      ? props.expense?.amount * -1
+      : props.expense?.amount;
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: props.expense?.name || "",
-      amount: props.expense?.amount || "",
+      amount: incomeAmount || "",
       date: formattedDate || "",
     },
     values: {
@@ -62,6 +68,10 @@ const ExpenseForm = (props) => {
   const handleSubmit = async (data) => {
     try {
       if (props.handleCreateExpense) {
+        if (data.category === "income") {
+          data.amount *= -1;
+          console.log(data.amount);
+        }
         await props.handleCreateExpense(data);
         toast.success(`${data.name} created successfully`, {
           cancel: {
@@ -72,6 +82,9 @@ const ExpenseForm = (props) => {
           },
         });
       } else {
+        if (data.category === "income") {
+          data.amount *= -1;
+        }
         props.handleUpdateExpense(props.expense.id, data);
         props.setOpen(false);
         toast.success(`${data.name} updated successfully `, {
@@ -172,6 +185,7 @@ const ExpenseForm = (props) => {
                       <SelectItem value="insurance">Insurance</SelectItem>
                       <SelectItem value="personal">Personal</SelectItem>
                       <SelectItem value="education">Education</SelectItem>
+                      <SelectItem value="income">Income</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
