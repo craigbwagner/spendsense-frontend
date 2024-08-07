@@ -17,9 +17,7 @@ const Dashboard = (props) => {
 
   return (
     <section className="grid grid-cols-1 bg-slate-50 px-24 gap-16 py-12 xl:grid-cols-2">
-      <div className="flex place-center m-auto my-8 w-fit min-w-[500px] max-w-[500px] shadow-md">
-        <IncomeNegativeBarChart {...props} />
-      </div>
+      <IncomeNegativeBarChart className="flex place-center m-auto min-w-[500px] max-w-[800px] shadow-md"{...props} />
       <ExpenseTable {...props} />
       <div className="flex place-center mx-auto">
         <Card className="m-auto max-h-[400px] min-w-[500px] max-w-[800px] shadow-md">
