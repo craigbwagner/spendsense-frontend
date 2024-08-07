@@ -1,4 +1,5 @@
 import { HeroParallax } from "./ui/hero-parallax";
+import { useEffect } from "react";
 
 const products = [
   {
@@ -88,8 +89,15 @@ const products = [
 ];
 
 const Landing = () => {
+  useEffect(() => {
+    document.body.classList.add("custom-scrollbar");
+
+    return () => {
+      document.body.classList.remove("custom-scrollbar");
+    };
+  }, []);
   return (
-    <div className="dark bg-neutral-950">
+    <div className="custom-scrollbar dark bg-neutral-950">
       <HeroParallax products={products} />
     </div>
   );
