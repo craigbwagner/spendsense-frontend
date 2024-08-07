@@ -2,7 +2,11 @@
 
 ## App Description
 
+Spendsense is a modern full-stack application written in JavaScript and Python that allows users to keep track of their spending. The app includes the ability to add expenses, set budgets, and view their data in a way that doesn't overcomplicate things.
+
 ### Features
+
+-
 
 ## Screenshots
 
