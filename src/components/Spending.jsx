@@ -25,9 +25,9 @@ const Dashboard = (props) => {
           <div className="flex flex-col gap-3">
             <h3 className="text-xl mb-3">User Settings</h3>
             <div className="grid grid-cols-2 gap-4 mb-3">
-              <h6 className="font-semibold">Monthly Income: ${props.settings.income}</h6>
-              <h6 className="font-semibold">Monthly Budget: ${props.settings.budget}</h6>
-              <h6 className="font-semibold">Monthly Savings Goal: ${props.settings.savingsGoal}</h6>
+              <h6 className="font-semibold">Monthly Income: ${props.settings.monthly_income}</h6>
+              <h6 className="font-semibold">Monthly Budget: ${props.settings.monthly_budget}</h6>
+              <h6 className="font-semibold">Monthly Savings Goal: ${props.settings.savings_goal}</h6>
             </div>
             <Dialog open={settingsOpen} onOpenChange={setSettingsOpen} >
               <DialogTrigger className="bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 rounded-md">
