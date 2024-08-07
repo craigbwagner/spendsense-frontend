@@ -19,7 +19,7 @@ const Navbar = (props) => {
         Spend
         <span className={path === "/" ? "text-fuchsia-600" : ""}>Sense</span>
       </Link>
-      <div className="flex gap-4">
+      <div className="flex gap-10">
         {user ? (
           <>
             <NavLink
@@ -47,7 +47,7 @@ const Navbar = (props) => {
                   : "group z-10 transition duration-300"
               }
             >
-              Spending
+              Budget
               <span
                 className={
                   path == "/"
