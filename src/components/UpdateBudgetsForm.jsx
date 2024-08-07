@@ -12,6 +12,7 @@ import {
 } from "./ui/form";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import {toast, Toaster } from "sonner";
 import * as categoryBudgetsService from "../services/categoryBudgetsService"
 
 const formSchema = z.object({
@@ -28,7 +29,7 @@ const formSchema = z.object({
   other: z.coerce.number().nonnegative(),
 });
 
-const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
+const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets, setBudgetsOpen }) => {
   const navigate = useNavigate();
 
   const form = useForm({
@@ -65,7 +66,15 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
     try {
       const updatedCategoryBudgets = await categoryBudgetsService.update(data);
       setCategoryBudgets(updatedCategoryBudgets);
-      navigate("/");
+      setBudgetsOpen(false);
+      toast.success("Budgets updated successfully", {
+        cancel: {
+          label: "Dismiss",
+          onClick: () => {
+            toast.dismiss();
+          },
+        },
+      });
     } catch (err) {
       console.log(err);
     }
@@ -248,7 +257,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
           <Button className="mt-8" type="submit">Save Budgets</Button>
         </form>
       </Form>
-
+      <Toaster />
     </section>
   )
 }
