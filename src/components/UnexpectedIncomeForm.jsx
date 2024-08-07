@@ -11,6 +11,7 @@ import {
 } from "./ui/form";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { Toaster, toast } from "sonner";
 
 const formSchema = z.object({
   name: z.string().min(5).max(40),
@@ -33,6 +34,14 @@ const UnexpectedIncomeForm = (props) => {
     data.category = "income";
     props.handleCreateExpense(data);
     form.reset();
+    toast.success("Income added successfully", {
+      cancel: {
+        label: "Dismiss",
+        onClick: () => {
+          toast.dismiss();
+        },
+      },
+    });
   };
 
   return (
@@ -93,6 +102,7 @@ const UnexpectedIncomeForm = (props) => {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
+      <Toaster />
     </section>
   );
 };
