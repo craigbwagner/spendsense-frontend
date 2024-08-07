@@ -71,13 +71,13 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
     }
   }
   return (
-    <section className="flex flex-col items-center justify-center w-full h-full m-8">
+    <section>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => {
             handleSubmit(data);
           })}
-          className="flex flex-col w-full max-w-md gap-4"
+          className="grid grid-cols-2 w-full max-w-md gap-3"
         >
           <FormField
             control={form.control}
@@ -245,7 +245,7 @@ const CategoryBudgetsForm = ({ categoryBudgets, setCategoryBudgets }) => {
             }}
           />
 
-          <Button type="submit">Save Budgets</Button>
+          <Button className="mt-8" type="submit">Save Budgets</Button>
         </form>
       </Form>
 
