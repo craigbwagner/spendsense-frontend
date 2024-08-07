@@ -37,7 +37,7 @@ const Dashboard = (props) => {
                 <DialogHeader>
                   <DialogTitle>Update User Settings</DialogTitle>
                 </DialogHeader>
-                <UpdateSettingsForm settings={props.settings} setSettings={props.setSettings} asChild/>
+                <UpdateSettingsForm settings={props.settings} setSettings={props.setSettings} />
               </DialogContent>
             </Dialog>
             <h3 className="text-xl mb-3">Budgets by Category</h3>
