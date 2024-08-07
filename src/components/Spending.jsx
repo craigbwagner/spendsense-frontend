@@ -11,13 +11,14 @@ import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, Dialog
 import UpdateSettingsForm from "./UpdateSettingsForm";
 import UpdateBudgetsForm from "./UpdateBudgetsForm";
 import IncomeNegativeBarChart from "./IncomeNegativeBarChart";
+import UnexpectedIncomeForm from "./UnexpectedIncomeForm";
 
 const Dashboard = (props) => {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [budgetsOpen, setBudgetsOpen] = useState(false);
 
   return (
-    <div>
+    <section className="grid grid-cols-1 gap-16 bg-slate-50 px-24 py-12 lg:grid-cols-2">
       <Card className="m-24 w-fit min-w-[500px] max-w-[800px] shadow-md">
         <CardHeader>
           <CardTitle>Configured Settings</CardTitle>
@@ -71,9 +72,19 @@ const Dashboard = (props) => {
           </div>
         </CardContent>
       </Card>
-      <IncomeNegativeBarChart {...props} />
+      <div className="m-24 w-fit min-w-[500px] max-w-[500px] shadow-md">
+        <IncomeNegativeBarChart {...props} />
+      </div>
       <ExpenseTable {...props} />
-    </div>
+      <Card className="m-24 w-fit min-w-[500px] max-w-[800px] shadow-md">
+        <CardHeader>
+          <CardTitle>Add Unplanned Income</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <UnexpectedIncomeForm handleCreateExpense={props.handleCreateExpense} />
+        </CardContent>
+      </Card>
+    </section>
   );
 };
 
