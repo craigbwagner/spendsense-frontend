@@ -183,11 +183,9 @@ const CategoriesPieChart = ({ expenses }) => {
   } else {
     return (
       <Card className="flex min-w-[300px] flex-col shadow-md lg:min-w-[350px]">
-        <CardHeader className="items-center pb-0">
-          <CardTitle>{monthName} Expenses</CardTitle>
-          <CardDescription>
-            {monthName} {moment().year()}
-          </CardDescription>
+        <CardHeader className="items-center text-center pb-0">
+          <CardTitle>{monthName} Expenses by Category</CardTitle>
+          <CardDescription />
         </CardHeader>
         <CardContent className="flex-1 pb-0">
           <ChartContainer
