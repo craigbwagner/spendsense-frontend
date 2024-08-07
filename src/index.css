@@ -35,7 +35,6 @@
     --chart-9: 39, 80%, 50%;
     --chart-10: 339, 80%, 59%;
     --chart-11: 0, 80%, 23%;
-
   }
 
   .dark {
@@ -72,5 +71,21 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #c026d3;
+    border-radius: 10px;
+    border: 2px solid #333;
   }
 }
