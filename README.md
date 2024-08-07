@@ -10,21 +10,6 @@ Spendsense is a modern full-stack application written in JavaScript and Python t
 
 ## Screenshots
 
-**Home**
-![Screenshot of Home](/src/components/Screenshots/Home.png)
-
-**Sign Up**
-![Screenshot of Signup](/src/components/Screenshots/Signup.png)
-
-**Profile**
-![ScreenShot of Profile](/src/components/Screenshots/Profile.png)
-
-**Campaign**
-![ScreenShot of Campaign](/src/components/Screenshots/Campaign.png)
-
-**Payment**
-![ScreenShot of Payment](/src/components/Screenshots/Payment.png)
-
 ## Getting Started
 
 [Link to Site](https://spendsense-frontend.netlify.app)
@@ -59,3 +44,5 @@ Hosted by Heroku and Netlify
 - JSON Web Tokens (JWT)
 
 ## Next Steps
+
+Future improvements include a more responsive site, the ability to set up recurring payments e.g., for subscription services, and support for more currencies than just USD.
