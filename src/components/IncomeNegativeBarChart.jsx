@@ -93,7 +93,7 @@ const IncomeNegativeBarChart = (props) => {
               cursor={false}
               content={<ChartTooltipContent hideLabel hideIndicator />}
             />
-            <Bar dataKey="visitors">
+            <Bar dataKey="netIncome">
               <LabelList position="top" dataKey="month" fillOpacity={1} />
               {chartData.map((item) => (
                 <Cell
