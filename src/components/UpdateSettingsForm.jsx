@@ -47,13 +47,13 @@ const UpdateSettingsForm = ({ settings, setSettings }) => {
     }
   };
   return (
-    <section className="m-8 flex h-full w-full flex-col items-center justify-center">
+    <section>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => {
             handleSubmit(data);
           })}
-          className="flex w-full max-w-md flex-col gap-4"
+          className="flex w-full max-w-md flex-col gap-3"
         >
           <FormField
             control={form.control}
