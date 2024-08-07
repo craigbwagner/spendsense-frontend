@@ -82,7 +82,7 @@ const IncomeNegativeBarChart = (props) => {
         <CardDescription>{`${moment.utc(threeMonthsAgo).format("MMMM")} - ${moment().endOf("month").format("MMMM")}`}</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig}>
+        <ChartContainer className="aspect-square max-h-[250px] mx-auto" config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <ChartTooltip
