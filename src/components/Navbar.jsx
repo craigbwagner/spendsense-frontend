@@ -40,7 +40,7 @@ const Navbar = (props) => {
               ></span>
             </NavLink>
             <NavLink
-              to="/spending"
+              to="/budget"
               className={({ isActive }) =>
                 isActive
                   ? "z-10 text-sky-800"
