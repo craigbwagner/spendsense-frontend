@@ -32,7 +32,7 @@ const chartConfig = {
   },
 }
 
-export default function IncomeNegativeBarChart(props) {
+const IncomeNegativeBarChart = (props) => {
   const recentExpenses = props.expenses.filter((expense) => {
     const expenseDate = moment.utc(expense.date);
     return (
@@ -120,3 +120,5 @@ export default function IncomeNegativeBarChart(props) {
     </Card>
   )
 }
+
+export default IncomeNegativeBarChart;
