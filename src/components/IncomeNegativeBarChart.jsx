@@ -59,9 +59,7 @@ const IncomeNegativeBarChart = (props) => {
       income: recentIncome
         .filter((expense) => moment.utc(expense.date).format("MMMM") === month)
         .reduce(
-          (total, expense) => total + Number(expense.amount),
-          monthlyIncome,
-        ),
+          (total, expense) => total + Number(expense.amount), 0),
 
       expenses: recentExpenses
         .filter((expense) => moment.utc(expense.date).format("MMMM") === month)
@@ -72,7 +70,7 @@ const IncomeNegativeBarChart = (props) => {
   const chartData = monthlyIncomeAndExpenses.map((item) => {
     return {
       month: item.month,
-      netIncome: item.income - item.expenses,
+      netIncome: monthlyIncome + (item.income * -1) - item.expenses,
     };
   });
 
@@ -99,7 +97,7 @@ const IncomeNegativeBarChart = (props) => {
                   fill={
                     item.netIncome > 0
                       ? "hsl(var(--chart-2))"
-                      : "hsl(var(--chart-11))"
+                      : "hsl(var(--chart-1))"
                   }
                 />
               ))}
