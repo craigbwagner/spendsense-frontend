@@ -18,7 +18,11 @@ const Dashboard = (props) => {
   const [budgetsOpen, setBudgetsOpen] = useState(false);
 
   return (
-    <section className="grid grid-cols-1 gap-16 bg-slate-50 px-24 py-12 lg:grid-cols-2">
+    <section className="grid grid-cols-1 bg-slate-50 px-24 py-12 lg:grid-cols-2">
+      <div className="m-24 w-fit min-w-[500px] max-w-[500px] shadow-md">
+        <IncomeNegativeBarChart {...props} />
+      </div>
+      <ExpenseTable {...props} />
       <Card className="m-24 w-fit min-w-[500px] max-w-[800px] shadow-md">
         <CardHeader>
           <CardTitle>Add Unplanned Income</CardTitle>
@@ -27,10 +31,6 @@ const Dashboard = (props) => {
           <UnexpectedIncomeForm handleCreateExpense={props.handleCreateExpense} />
         </CardContent>
       </Card>
-      <div className="m-24 w-fit min-w-[500px] max-w-[500px] shadow-md">
-        <IncomeNegativeBarChart {...props} />
-      </div>
-      <ExpenseTable {...props} />
       <Card className="m-24 w-fit min-w-[500px] max-w-[800px] shadow-md">
         <CardHeader>
           <CardTitle>Configured Settings</CardTitle>
