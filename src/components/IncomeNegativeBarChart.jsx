@@ -81,7 +81,7 @@ const IncomeNegativeBarChart = (props) => {
     <Card>
       <CardHeader>
         <CardTitle>Net Income</CardTitle>
-        <CardDescription>{`${moment.utc(threeMonthsAgo).format("MMMM")} - ${moment.utc(thisMonth).format("MMMM")}, ${moment.utc().year()} `}</CardDescription>
+        <CardDescription>{`${moment.utc(threeMonthsAgo).format("MMMM")} - ${moment().endOf("month").format("MMMM")}`}</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
