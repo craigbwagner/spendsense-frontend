@@ -90,7 +90,8 @@ export const Header = () => {
   return (
     <div className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-40 md:py-40">
       <h1 className="text-2xl font-bold dark:text-white md:text-7xl">
-        The Ultimate <br /> Finance Tracker
+        The <span className="text-fuchsia-600">Ultimate</span> <br /> Finance
+        Tracker
       </h1>
       <p className="mt-8 max-w-2xl text-base dark:text-neutral-200 md:text-xl">
         Track your income and expenses with ease. <br /> Get started today!

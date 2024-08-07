@@ -11,11 +11,11 @@ const Navbar = (props) => {
     <nav
       className={
         path !== "/"
-          ? `flex items-center justify-between bg-gray-800 p-4 text-white`
+          ? `flex items-center justify-between bg-neutral-900 p-4 text-white`
           : `absolute top-0 flex h-20 w-full items-center justify-between bg-transparent p-4 text-white`
       }
     >
-      <Link to="/" className="z-10 text-2xl font-bold transition">
+      <Link to="/" className="z-10 text-3xl font-bold transition">
         SpendSense
       </Link>
       <div className="flex gap-4">
@@ -30,7 +30,13 @@ const Navbar = (props) => {
               }
             >
               Dashboard
-              <span className="block h-0.5 max-w-0 bg-white transition-all duration-500 group-hover:max-w-full"></span>
+              <span
+                className={
+                  path == "/"
+                    ? "block h-0.5 max-w-0 bg-fuchsia-600 transition-all duration-500 group-hover:max-w-full"
+                    : "block h-0.5 max-w-0 bg-white transition-all duration-500 group-hover:max-w-full"
+                }
+              ></span>
             </NavLink>
             <NavLink
               to="/spending"
@@ -41,14 +47,26 @@ const Navbar = (props) => {
               }
             >
               Spending
-              <span className="block h-0.5 max-w-0 bg-white transition-all duration-500 group-hover:max-w-full"></span>
+              <span
+                className={
+                  path == "/"
+                    ? "block h-0.5 max-w-0 bg-fuchsia-600 transition-all duration-500 group-hover:max-w-full"
+                    : "block h-0.5 max-w-0 bg-white transition-all duration-500 group-hover:max-w-full"
+                }
+              ></span>
             </NavLink>
             <button
               onClick={props.handleSignout}
               className="group z-10 bg-none text-white transition duration-300"
             >
               Sign out
-              <span className="block h-0.5 max-w-0 bg-white transition-all duration-500 group-hover:max-w-full"></span>
+              <span
+                className={
+                  path == "/"
+                    ? "block h-0.5 max-w-0 bg-fuchsia-600 transition-all duration-500 group-hover:max-w-full"
+                    : "block h-0.5 max-w-0 bg-white transition-all duration-500 group-hover:max-w-full"
+                }
+              ></span>
             </button>
           </>
         ) : (
