@@ -116,9 +116,6 @@ const CategoriesPieChart = ({ expenses }) => {
   ];
 
   const chartConfig = {
-    visitors: {
-      label: "Visitors",
-    },
     housing: {
       label: "Housing",
       color: "hsl(var(--chart-1))",

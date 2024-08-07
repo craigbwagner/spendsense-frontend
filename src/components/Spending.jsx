@@ -10,6 +10,7 @@ import {
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import UpdateSettingsForm from "./UpdateSettingsForm";
 import UpdateBudgetsForm from "./UpdateBudgetsForm";
+import IncomeNegativeBarChart from "./IncomeNegativeBarChart";
 
 const Dashboard = (props) => {
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -68,6 +69,7 @@ const Dashboard = (props) => {
           </div>
         </CardContent>
       </Card>
+      <IncomeNegativeBarChart {...props} />
       <ExpenseTable {...props} />
     </div>
   );
