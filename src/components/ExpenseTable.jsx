@@ -138,7 +138,7 @@ const ExpenseTable = (props) => {
   };
 
   return (
-    <main className="min-w-[400px]">
+    <main className="min-w-[300px]">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="w-full">
           <TabsTrigger className="w-full" value="Week">
@@ -156,7 +156,7 @@ const ExpenseTable = (props) => {
         <TabsContent value="Month"></TabsContent>
         <TabsContent value="Year"></TabsContent>
       </Tabs>
-      <Card className="min-w-[]400px max-h-[500px] overflow-auto shadow-md scrollbar-thin">
+      <Card className="max-h-[500px] min-w-[300px] overflow-auto shadow-md scrollbar-thin">
         <CardHeader className="flex flex-row items-start justify-between pb-8">
           <div>
             <CardTitle>This {activeTab}'s expenses</CardTitle>
@@ -208,7 +208,9 @@ const ExpenseTable = (props) => {
                 .map((expense) => {
                   return (
                     <TableRow key={expense.id}>
-                      <TableCell>{expense.name}</TableCell>
+                      <TableCell className="font-semibold">
+                        {expense.name}
+                      </TableCell>
                       <TableCell>${expense.amount}</TableCell>
                       <TableCell>{formatDate(expense.date)}</TableCell>
                       <TableCell>
