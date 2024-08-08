@@ -12,6 +12,12 @@ Spendsense is a modern full-stack application written in JavaScript and Python t
 
 ## Screenshots
 
+![ScreenShot of Homepage](/public/spendsense-homepage.png)
+
+![ScreenShot of Dashboard](/public/spendsense-screenshot.png)
+
+![ScreenShot of Budget Page](/public/spendsense-budget-page-small-screen.png)
+
 ## Getting Started
 
 [Link to Site](https://spendsense-frontend.netlify.app)
