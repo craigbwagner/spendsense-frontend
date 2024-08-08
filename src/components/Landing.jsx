@@ -162,7 +162,6 @@ const Landing = () => {
             </CardHeader>
             <CardContent className="mt-12">
               <TypeAnimation
-                repeat={3}
                 style={{
                   whiteSpace: "pre-line",
                   height: "195px",
