@@ -16,7 +16,7 @@ const Dashboard = (props) => {
   const [budgetsOpen, setBudgetsOpen] = useState(false);
 
   return (
-    <section className="grid grid-cols-1 bg-slate-50 px-24 gap-16 py-12 xl:grid-cols-2">
+    <section className="grid grid-cols-1 bg-slate-50 px-24 gap-8 py-12 xl:grid-cols-2">
       <IncomeNegativeBarChart {...props} />
       <ExpenseTable {...props} />
       <div className="flex place-center mx-auto">
