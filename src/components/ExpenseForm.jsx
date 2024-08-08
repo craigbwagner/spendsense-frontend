@@ -119,7 +119,7 @@ const ExpenseForm = (props) => {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="name" {...field} />
+                    <Input placeholder="Name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -166,7 +166,7 @@ const ExpenseForm = (props) => {
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="category" />
+                        <SelectValue placeholder="Category" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
