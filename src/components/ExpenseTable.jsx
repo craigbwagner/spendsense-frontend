@@ -205,6 +205,16 @@ const ExpenseTable = (props) => {
               </TableRow>
             </TableHeader>
             <TableBody>
+              {filteredExpenses(activeTab.toLowerCase()).length === 0 && (
+                <TableRow>
+                  <TableCell
+                    colSpan="5"
+                    className="py-8 text-center font-semibold"
+                  >
+                    No transactions found
+                  </TableCell>
+                </TableRow>
+              )}
               {filteredExpenses(activeTab.toLowerCase())
                 .sort((a, b) => {
                   return new Date(b.date) - new Date(a.date);

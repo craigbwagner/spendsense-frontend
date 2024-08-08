@@ -42,53 +42,59 @@ const SigninForm = (props) => {
   };
 
   return (
-    <main className="m-4 flex max-w-md flex-col items-center justify-center rounded-md border-2 border-black px-12 py-4">
-      <h1 className="p-4 text-2xl font-bold"> Log in </h1>
-      <Form {...form}>
-        {message && <p className="text-red-500">{message}</p>}
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="flex w-full max-w-md flex-col gap-8"
-        >
-          <FormField
-            control={form.control}
-            name="username"
-            render={({ field }) => {
-              return (
-                <FormItem>
-                  <FormLabel>Username</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Username" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          ></FormField>
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => {
-              return (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input type="password" placeholder="password" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          />
-          <Button type="submit">Submit </Button>
-        </form>
-      </Form>
-      <p className="mt-8 text-xs">
-        Don't have an account yet?{" "}
-        <Link className="font-semibold text-green-600" to="/signup">
-          Sign up
-        </Link>
-      </p>
+    <main className="flex h-[92vh] items-center justify-center bg-slate-100">
+      <div className="m-4 flex min-w-[400px] max-w-md flex-col items-center justify-center rounded-md border-2 border-black bg-white px-12 py-4 shadow-md">
+        <h1 className="p-4 text-2xl font-bold"> Log in </h1>
+        <Form {...form}>
+          {message && <p className="text-red-500">{message}</p>}
+          <form
+            onSubmit={form.handleSubmit(handleSubmit)}
+            className="flex w-full max-w-md flex-col gap-8"
+          >
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => {
+                return (
+                  <FormItem>
+                    <FormLabel>Username</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Username" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                );
+              }}
+            ></FormField>
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => {
+                return (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="password"
+                        placeholder="password"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                );
+              }}
+            />
+            <Button type="submit">Submit </Button>
+          </form>
+        </Form>
+        <p className="mt-8 text-xs">
+          Don't have an account yet?{" "}
+          <Link className="font-semibold text-green-600" to="/signup">
+            Sign up
+          </Link>
+        </p>
+      </div>
     </main>
   );
 };
